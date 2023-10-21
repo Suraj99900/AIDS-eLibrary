@@ -8,33 +8,43 @@ include_once "./leftBar.php";
 
 <!-- main Content start -->
 <div class="main-content">
+    <section class="upload-book section">
 
-
-
-
-    <!-- home section start -->
-    <section class="upload section " id="upload">
         <div class="container">
 
-            <!-- upload Section form  start-->
+            <!-- upload book section start -->
             <div class="row">
                 <div class="section-title padd-15">
-                    <h2>Staff Login</h2>
+                    <h2>Upload Book</h2>
                 </div>
             </div>
-            <h3 class="contact-title padd-15 typing">Welcome to AIDS E-Library </h3>
-            <div class="upload-btn-section shadow-lg p-5 mb-5 bg-body rounded flex" style="position: relative;">
+            <!-- upload book section end -->
+
+            <div class="shadow-lg p-5 mb-5 bg-body rounded">
                 <form>
                     <div class="row align-items-center p-3">
                         <div class="col">
-                            <label for="StaffUserName" class="form-label"><i class="fa-solid fa-user fa-i"></i> UserName</label>
-                            <input type="text" class="form-control custom-control " id="staffuserNameId" name="staffname" placeholder="Enter UserName">
+                            <label for="BookName" class="form-label"><i class="fa-solid fa-signature"></i> Book Name</label>
+                            <input type="text" class="form-control custom-control" id="bookNameId" name="bookname" placeholder="Enter Book Name">
+                        </div>
+                        <div class="col">
+                            <label for="BookISBN" class="form-label"><i class="fa-solid fa-hashtag"></i> ISBN</label>
+                            <input type="number" class="form-control custom-control" id="bookISBNId" name="bookisbn" placeholder="Enter Book ISBN Number">
+
+                        </div>
+                        <div class="col">
+                            <label for="sem" class="form-label"><i class="fa-solid fa-hashtag"></i>Semester</label>
+                            <input type="number" class="form-control custom-control" id="semesterId" name="semester" placeholder="Enter Semester">
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
                         <div class="col">
-                            <label for="StaffUserPassword" class="form-label"><i class="fa-solid fa-lock fa-i"></i> Password</label>
-                            <input type="password" class="form-control custom-control" id="staffuserPasswordId" name="staffPassword" placeholder="Enter Password">
+                            <label for="BookDescription" class="form-label"><i class="fa-solid fa-quote-left"></i> Book Description</label>
+                            <textarea name="bookdescription" class="form-control" placeholder="Enter Book Description" id="bookDescriptionId" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="col">
+                            <label for="selectBook" class="form-label"><i class="fa-solid fa-file-arrow-up"></i> Select Book </label>
+                            <input type="file" class="form-control custom-control btn btn-primary" id="bookFileId" name="bookFile">
                         </div>
                     </div>
 
@@ -43,20 +53,18 @@ include_once "./leftBar.php";
                     </div>
                 </form>
             </div>
-
-
         </div>
+
+
+
     </section>
-    <!-- home section end -->
+
+    <!-- book search form  end-->
 
 
 </div>
-
 <!-- main Content end-->
 
-</div>
-
-<!-- main container end  -->
 
 <!-- style switcher start -->
 <div class="style-switcher">
@@ -91,7 +99,9 @@ include_once "./leftBar.php";
 
 <!-- manu toggler end -->
 
+
 <!-- include footer section -->
+
 <?php
 include_once "./CDN_Footer.php";
 ?>

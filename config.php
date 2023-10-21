@@ -9,4 +9,4 @@ define('DB_PASSWORD', 'plus91');
 define('API_KEY', 'your-api-key-here');
 define('DEBUG_MODE', true);
 
-define('INDEX_LOCATION','http://localhost/smartmanage/view/home.php');
+define('INDEX_LOCATION','http://localhost/AIDS-eLibrary/view/home.php');

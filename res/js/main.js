@@ -1,28 +1,27 @@
 
 
 // =============== types
-// const typed = document.querySelector(".typing");
-// const string_data = ["Smartmanage", "Smartmanage", "Smartmanage"];
-// let ixd = 1;
-// let i = 0;
+const typed = document.querySelector(".typing");
+const string_data = ["Welcome to AIDS E-Library", "Explore Knowledge Online", "Discover a World of Information"];
+let ixd = 1;
+let i = 0;
 
-// function typeing() {
+function typeing() {
+    typed.innerText = string_data[i].slice(0, ixd);
+    ixd++;
 
-//     typed.innerText = string_data[i].slice(0, ixd);
+    if (ixd > string_data[i].length) {
+        setTimeout(() => {
+            i++;
+            ixd = 1;
+            if (i >= string_data.length) {
+                i = 0;
+            }
+        }, 1000); // Delay between messages (1 second in this example)
+    }
+}
 
-//     ixd++;
-
-
-//     if (ixd > string_data[i].length) {
-//         i++;
-//         ixd = 1;
-//         if (i > 2) {
-//             i = 0;
-//         }
-//     }
-// }
-
-// setInterval(typeing, 150)
+setInterval(typeing, 150); 
 
 
 

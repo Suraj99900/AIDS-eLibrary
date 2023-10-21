@@ -4,13 +4,8 @@ include_once "./CDN_Header.php";
 include_once "./leftBar.php";
 ?>
 
-
-
 <!-- main Content start -->
 <div class="main-content">
-
-
-
 
     <!-- home section start -->
     <section class="upload section " id="upload">
@@ -19,16 +14,21 @@ include_once "./leftBar.php";
             <!-- upload Section form  start-->
             <div class="row">
                 <div class="section-title padd-15">
-                    <h2>Staff Login</h2>
+                    <h2>Registration Form</h2>
                 </div>
             </div>
-            <h3 class="contact-title padd-15 typing">Welcome to AIDS E-Library </h3>
             <div class="upload-btn-section shadow-lg p-5 mb-5 bg-body rounded flex" style="position: relative;">
                 <form>
                     <div class="row align-items-center p-3">
                         <div class="col">
                             <label for="StaffUserName" class="form-label"><i class="fa-solid fa-user fa-i"></i> UserName</label>
                             <input type="text" class="form-control custom-control " id="staffuserNameId" name="staffname" placeholder="Enter UserName">
+                        </div>
+                    </div>
+                    <div class="row align-items-center p-3">
+                        <div class="col">
+                            <label for="StaffSecretkey" class="form-label"><i class="fa-solid fa-key fa-i"></i></i>Secret key</label>
+                            <input type="text" class="form-control custom-control" id="staffSecretkeyId" name="staffSecretkey" placeholder="Enter Staff Secret key">
                         </div>
                     </div>
                     <div class="row align-items-center p-3">

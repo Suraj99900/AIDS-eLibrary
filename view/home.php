@@ -1,6 +1,7 @@
 <?php
 // include header section of template
-include_once "./CDN_Header.php"
+include_once "./CDN_Header.php";
+include_once "./leftBar.php";
 ?>
 
 <body>
@@ -20,16 +21,16 @@ include_once "./CDN_Header.php"
 
             <ul class="nav">
                 <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="loginScreen.php"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <li><a href="uploadScreen.php"><i class="fa-solid fa-upload"></i>Upload</a></li>
                 <li><a href="#contact"><i class="fa fa-comments"></i> Contact</a></li>
 
                 <div class="container px-4">
                     <div class="row gx-2">
                         <div class="col mb-3">
-                            <a href="#contact" class="btn auth login">Login Staff</a>
+                            <a href="loginScreen.php" class="btn auth login">Login Staff</a>
                         </div>
                         <div class="col">
-                            <a href="#contact" class="btn auth register">Register Staff</a>
+                            <a href="registrationForm.php" class="btn auth register">Register Staff</a>
                         </div>
                     </div>
                 </div>

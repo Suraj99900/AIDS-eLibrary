@@ -153,6 +153,16 @@ li {
     background: var(--skin-color);
 }
 
+.fa-i {
+    font-size: 1.5rem;
+    padding: 2px 10px;
+    display: inline-block;
+    white-space: nowrap;
+    border: none;
+    transition: all 0.3 ease;
+    color: var(--skin-color);
+}
+
 .btn:hover {
     transform: scale(1.05);
 }
@@ -805,7 +815,7 @@ form #seachHelp{
 form .search-btn{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
     margin-right: 20px;
 }
 
@@ -1373,7 +1383,17 @@ td {
     color: var(--text-black-700);
 }
 
+.flot-bottom{
+    position: relative;
+    bottom: -68px;
+}
 
+.upload-btn-section{
+    display: flex;
+    justify-content: space-around;
+    /* align-content: center; */
+    align-items: stretch;
+}
 
 
 
