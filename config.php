@@ -8,5 +8,6 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', 'plus91');
 define('API_KEY', 'your-api-key-here');
 define('DEBUG_MODE', true);
+define('API_URL','http://localhost:8000/api');
 
 define('INDEX_LOCATION','http://localhost/AIDS-eLibrary/view/home.php');

@@ -2,7 +2,7 @@
 
 // =============== types
 const typed = document.querySelector(".typing");
-const string_data = ["Welcome to AIDS E-Library", "Explore Knowledge Online", "Discover a World of Information"];
+const string_data = ["Welcome to AI&DS E-Library", "Explore Knowledge Online", "Discover a World of Information"];
 let ixd = 1;
 let i = 0;
 

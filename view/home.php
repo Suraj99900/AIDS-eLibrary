@@ -2,6 +2,8 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+include_once "../session.php";
+$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
 ?>
 
 <body>
@@ -21,17 +23,27 @@ include_once "./leftBar.php";
 
             <ul class="nav">
                 <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="uploadScreen.php"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <?php
+                if ($bIsLogin) {
+                ?>
+                    <li><a href="uploadScreen.php"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <?php } ?>
                 <li><a href="#contact"><i class="fa fa-comments"></i> Contact</a></li>
 
                 <div class="container px-4">
                     <div class="row gx-2">
-                        <div class="col mb-3">
-                            <a href="loginScreen.php" class="btn auth login">Login Staff</a>
-                        </div>
-                        <div class="col">
-                            <a href="registrationForm.php" class="btn auth register">Register Staff</a>
-                        </div>
+                        <?php
+                        if ($bIsLogin) {
+                        ?>
+                            <a href="logOut.php" class="btn auth">Log Out</a>
+                        <?php } else { ?>
+                            <div class="col mb-3">
+                                <a href="loginScreen.php" class="btn auth login">Login Staff</a>
+                            </div>
+                            <div class="col">
+                                <a href="registrationForm.php" class="btn auth register">Register Staff</a>
+                            </div>
+                        <?php  } ?>
                     </div>
                 </div>
             </ul>
@@ -52,14 +64,21 @@ include_once "./leftBar.php";
                         </div>
                     </div>
                     <form>
-                        <div class="mb-3">
-                            <label for="searchBook" class="form-label">Search Book</label>
-                            <input type="search" class="form-control custom-control" id="searchBookId" name="searchbook" placeholder="Enter Book Name, ISBN Number ">
-                            <div id="seachHelp" class="form-text ml-3">Search book by name , ISBN Number</div>
+                        <div class="row align-items-center p-3">
+                            <div class="col">
+                                <label for="searchBook" class="form-label">Search By Book Name</label>
+                                <input type="search" class="form-control custom-control" id="searchBookByNameId" name="searchbook" placeholder="Enter Book Name">
+                                <div id="seachHelp" class="form-text ml-3">Search book by name</div>
+                            </div>
+                            <div class="col">
+                                <label for="searchBook" class="form-label">Search By ISBN</label>
+                                <input type="search" class="form-control custom-control" id="searchBookByISBNId" name="searchbook" placeholder="Enter ISBN Number ">
+                                <div id="seachHelp" class="form-text ml-3">Search ISBN Number</div>
+                            </div>
                         </div>
 
                         <div class="flex search-btn">
-                            <button type="submit" class="btn search">Search</button>
+                            <a class="btn search" id="idSearch">Search</a>
                         </div>
                     </form>
 
@@ -68,47 +87,47 @@ include_once "./leftBar.php";
                     <!-- Book table By search start -->
 
                     <div class="searchTableResult">
-                    <table id="SearchTableId" class="SearchTableBook compact hover order-column row-border">
-                        <thead>
-                            <tr>
-                                <th>Sr.No</th>
-                                <th>Book Name</th>
-                                <th>ISBN</th>
-                                <th>Uploaded Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>C Proramming</td>
-                                <td>I-4589658420</td>
-                                <td>10-10-2023</td>
-                                <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>C++ Proramming</td>
-                                <td>I-4589658420</td>
-                                <td>10-10-2023</td>
-                                <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>C++ Proramming</td>
-                                <td>I-4589658420</td>
-                                <td>10-10-2023</td>
-                                <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>C++ Proramming</td>
-                                <td>I-4589658420</td>
-                                <td>10-10-2023</td>
-                                <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <table id="SearchTableId" class="SearchTableBook compact hover order-column row-border">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No</th>
+                                    <th>Book Name</th>
+                                    <th>ISBN</th>
+                                    <th>Uploaded Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>C Proramming</td>
+                                    <td>I-4589658420</td>
+                                    <td>10-10-2023</td>
+                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>C++ Proramming</td>
+                                    <td>I-4589658420</td>
+                                    <td>10-10-2023</td>
+                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>C++ Proramming</td>
+                                    <td>I-4589658420</td>
+                                    <td>10-10-2023</td>
+                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>C++ Proramming</td>
+                                    <td>I-4589658420</td>
+                                    <td>10-10-2023</td>
+                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <!-- Book table By search end -->
 
@@ -346,3 +365,4 @@ include_once "./leftBar.php";
 
     <!-- include footer section -->
     <?php include_once "./CDN_Footer.php" ?>
+    <script src="../controller/SearchController.js"></script>

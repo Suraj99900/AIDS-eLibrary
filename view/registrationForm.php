@@ -39,7 +39,7 @@ include_once "./leftBar.php";
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <button type="submit" class="btn search">Submit</button>
+                        <a id="idRegister" class="btn search">Submit</a>
                     </div>
                 </form>
             </div>
@@ -95,3 +95,4 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
+<script src="../controller/RegisterController.js"></script>

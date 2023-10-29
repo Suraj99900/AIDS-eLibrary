@@ -2,6 +2,13 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+include_once "../session.php";
+
+$bIsLogin = $_SESSION['is_login'] ?$_SESSION['is_login'] : false;
+if (!$bIsLogin) {
+    header("Location: loginScreen.php" , true, 301); 
+    exit;
+}
 ?>
 
 
@@ -23,7 +30,7 @@ include_once "./leftBar.php";
                     </div>
                 </div>
 
-                <h3 class="contact-title padd-15">AIDS STAFF UPLOAD SECTION</h3>
+                <h3 class="contact-title padd-15">AI&DS STAFF UPLOAD SECTION</h3>
                 <div class="upload-btn-section shadow p-3 mb-5 bg-body rounded flex">
                     <div class="row p-2">
                         <div class="card m-2" style="width: 18rem;">

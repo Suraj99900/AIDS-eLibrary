@@ -22,7 +22,7 @@ include_once "./leftBar.php";
                     <h2>Staff Login</h2>
                 </div>
             </div>
-            <h3 class="contact-title padd-15 typing">Welcome to AIDS E-Library </h3>
+            <h3 class="contact-title padd-15 typing">Welcome to AI&DS E-Library </h3>
             <div class="upload-btn-section shadow-lg p-5 mb-5 bg-body rounded flex" style="position: relative;">
                 <form>
                     <div class="row align-items-center p-3">
@@ -39,7 +39,7 @@ include_once "./leftBar.php";
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <button type="submit" class="btn search">Submit</button>
+                        <a id="idLogin" class="btn search">Submit</a>
                     </div>
                 </form>
             </div>
@@ -95,3 +95,4 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
+<script src="../controller/LoginController.js"></script>

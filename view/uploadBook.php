@@ -26,15 +26,17 @@ include_once "./leftBar.php";
                         <div class="col">
                             <label for="BookName" class="form-label"><i class="fa-solid fa-signature"></i> Book Name</label>
                             <input type="text" class="form-control custom-control" id="bookNameId" name="bookname" placeholder="Enter Book Name">
+                            <input type="hidden" class="form-control custom-control" id="userId" name="user" value="<?php echo $_SESSION['username'] ?>">
                         </div>
                         <div class="col">
                             <label for="BookISBN" class="form-label"><i class="fa-solid fa-hashtag"></i> ISBN</label>
-                            <input type="number" class="form-control custom-control" id="bookISBNId" name="bookisbn" placeholder="Enter Book ISBN Number">
+                            <input type="text" class="form-control custom-control" id="bookISBNId" name="bookisbn" placeholder="Enter Book ISBN Number">
 
                         </div>
                         <div class="col">
-                            <label for="sem" class="form-label"><i class="fa-solid fa-hashtag"></i>Semester</label>
-                            <input type="number" class="form-control custom-control" id="semesterId" name="semester" placeholder="Enter Semester">
+                            <label for="sem" class="form-label"><i class="fa-solid fa-hashtag"></i> Semester</label>
+                            <select class="form-select custom-control" id="semesterId" name="semester">
+                            </select>
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
@@ -49,7 +51,7 @@ include_once "./leftBar.php";
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <button type="submit" class="btn search">Submit</button>
+                        <a id="idUploadBook" class="btn search">Submit</a>
                     </div>
                 </form>
             </div>
@@ -105,3 +107,5 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/UploadBooController.js"></script>
