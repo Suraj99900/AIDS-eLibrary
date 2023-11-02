@@ -108,4 +108,4 @@ include_once "./leftBar.php";
 include_once "./CDN_Footer.php";
 ?>
 
-<script src="../controller/UploadBooController.js"></script>
+<script src="../controller/UploadBooKController.js"></script>

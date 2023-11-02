@@ -97,35 +97,8 @@ $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>C Proramming</td>
-                                    <td>I-4589658420</td>
-                                    <td>10-10-2023</td>
-                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>C++ Proramming</td>
-                                    <td>I-4589658420</td>
-                                    <td>10-10-2023</td>
-                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>C++ Proramming</td>
-                                    <td>I-4589658420</td>
-                                    <td>10-10-2023</td>
-                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>C++ Proramming</td>
-                                    <td>I-4589658420</td>
-                                    <td>10-10-2023</td>
-                                    <td><button class="btn Sownlaod" id="download_1"><i class="fa-solid fa-circle-arrow-down"></i></button></td>
-                                </tr>
+                            <tbody id="searchTableBodyId">
+                               
                             </tbody>
                         </table>
                     </div>

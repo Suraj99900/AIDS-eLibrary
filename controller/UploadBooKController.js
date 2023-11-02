@@ -38,7 +38,7 @@ function handleUploadSuccess(data) {
         // Registration was successful
         alert(data.message);
         // Redirect to another page (example)
-        window.location.href = "uploadScreen.php";
+        // window.location.href = "uploadScreen.php";
     }
 }
 

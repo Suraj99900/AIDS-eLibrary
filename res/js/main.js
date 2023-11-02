@@ -21,7 +21,7 @@ function typeing() {
     }
 }
 
-setInterval(typeing, 150); 
+setInterval(typeing, 150);
 
 
 
@@ -211,28 +211,31 @@ faq_items.forEach(faq => {
 // source code
 
 let tabs = document.querySelectorAll(".tabs__toggle"),
-contents = document.querySelectorAll(".tabs__content");
+    contents = document.querySelectorAll(".tabs__content");
 
-tabs.forEach((tab,index) =>{
-    tab.addEventListener('click',()=>{
-        contents.forEach((content) =>{
+tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => {
+        contents.forEach((content) => {
             content.classList.remove('is-active');
         })
-        tabs.forEach((tab)=>{
+        tabs.forEach((tab) => {
             tab.classList.remove('is-active');
         })
         contents[index].classList.add('is-active');
         // contents[tab].classList.add('is-active');
-        for(let i=0;i< tabs.length;i++){
+        for (let i = 0; i < tabs.length; i++) {
             tabs[i].classList.remove("is-active-b");
         }
         tabs[index].classList.add('is-active-b');
     })
-}) 
+})
 
 
 // DataTable connection 
 
 let table = new DataTable('#SearchTableId', {
-    responsive: true
+    responsive: true,
+    paging: true,  // Enable pagination
+    pageLength: 10,  // Number of rows to display per page
+    lengthMenu: [10, 25, 50, 100],
 });
