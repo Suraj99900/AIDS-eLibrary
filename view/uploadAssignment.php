@@ -26,6 +26,7 @@ include_once "./leftBar.php";
                         <div class="col">
                             <label for="AssignmentName" class="form-label"><i class="fa-solid fa-signature"></i>Assignment Name</label>
                             <input type="text" class="form-control custom-control" id="assignmentNameId" name="assignmentname" placeholder="Enter Assignment Name">
+                            <input type="hidden" class="form-control custom-control" id="userId" name="user" value="<?php echo $_SESSION['username'] ?>">
                         </div>
                         <div class="col">
                             <label for="AssignmentRelatedToSubject" class="form-label"><i class="fa-solid fa-hashtag"></i> Related To Subject</label>
@@ -34,7 +35,8 @@ include_once "./leftBar.php";
                         </div>
                         <div class="col">
                             <label for="sem" class="form-label"><i class="fa-solid fa-hashtag"></i>Semester</label>
-                            <input type="number" class="form-control custom-control" id="semesterId" name="semester" placeholder="Enter Semester">
+                            <select class="form-select custom-control" id="semesterId" name="semester">
+                            </select>
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
@@ -49,7 +51,7 @@ include_once "./leftBar.php";
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <button type="submit" class="btn search">Submit</button>
+                        <a id="uploadAssId" class="btn search">Submit</a>
                     </div>
                 </form>
             </div>
@@ -105,3 +107,5 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/UploadAssignmentController.js"></script>

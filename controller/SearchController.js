@@ -2,19 +2,22 @@
 const API_URL = "http://localhost:8000/api";
 
 // Function to handle the file search
-function searchBooks(page) {
-    const bookName = $("#searchBookByNameId").val();
-    const bookISBN = $("#searchBookByISBNId").val();
-
+function searchBooks(page = 1) {
+    var bookName = $("#searchBookByNameId").val();
+    var bookISBN = $("#searchBookByISBNId").val();
     // Make an AJAX request using $.get method
-    $.get(`${API_URL}/fetch/book`, {
-        name: bookName,
-        isbn: bookISBN,
-        limit: 10,
-        page: page,
-    })
-        .done(handleSearchSuccess)
-        .fail(handleSearchError);
+
+    $.ajax({
+        url: `${API_URL}/fetch/book?name=` + bookName + `&isbn=` + bookISBN + `&limit=` + 10 + `&page=` + page,
+        method: 'get',
+        success: function (data) {
+            handleSearchSuccess(data);
+        },
+        error: function (data) {
+            // Handle Ajax error
+            handleSearchError(data);
+        }
+    });
 }
 
 // Function to handle a successful search
@@ -25,15 +28,24 @@ function handleSearchSuccess(data) {
 
         const books = data.body.data;
         books.forEach((book, index) => {
+            var sFileType = "";
+            if (book.file_type == 1) {
+                sFileType = "Book";
+            } else if (book.file_type == 2) {
+                sFileType = "Note";
+            } else if (book.file_type == 3) {
+                sFileType = "Assignment";
+            }
             const row = [
                 ++index,
                 book.name,
                 book.isbn ? book.isbn : '',
+                sFileType,
                 new Date(book.added_on).toLocaleString(),
                 `<button class='btn download' data-url='${book.file_name}' data-index='${index}'><i class='fa-solid fa-circle-arrow-down'></i></button>`
             ];
             dataTable.row.add(row).draw();
-            
+
         });
         // Handle pagination
         const currentPage = data.body.current_page;
@@ -139,4 +151,37 @@ $(document).ready(() => {
     searchBooks();
     // Attach the click event handler to the search button
     $("#idSearch").click(searchBooks);
+
+    var semesterId = $("#semesterId");
+
+    $.ajax({
+        url: `${API_URL}/semester`,
+        type: 'GET',
+        success: function (response) {
+            var aData = response.data; // Assuming response is an array of semester data
+
+            // Clear existing options
+            semesterId.empty();
+
+            // Add default option
+            semesterId.append($('<option>', {
+                value: '',
+                text: 'Select Any'
+            }));
+
+            // Add semester options
+            $.each(aData, function (index, semester) {
+                semesterId.append($('<option>', {
+                    value: semester.id, // Adjust the property based on your response structure
+                    text: semester.semester // Adjust the property based on your response structure
+                }));
+            });
+
+        },
+        error: function (xhr, status, error) {
+            // Handle errors here
+            console.error(xhr.responseText);
+        }
+    });
 });
+

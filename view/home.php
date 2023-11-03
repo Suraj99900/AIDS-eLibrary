@@ -65,40 +65,68 @@ $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
                     </div>
                     <form>
                         <div class="row align-items-center p-3">
-                            <div class="col">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <label for="searchBook" class="form-label">Search By Book Name</label>
                                 <input type="search" class="form-control custom-control" id="searchBookByNameId" name="searchbook" placeholder="Enter Book Name">
-                                <div id="seachHelp" class="form-text ml-3">Search book by name</div>
+
                             </div>
-                            <div class="col">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <label for="searchBook" class="form-label">Search By ISBN</label>
-                                <input type="search" class="form-control custom-control" id="searchBookByISBNId" name="searchbook" placeholder="Enter ISBN Number ">
-                                <div id="seachHelp" class="form-text ml-3">Search ISBN Number</div>
+                                <input type="search" class="form-control custom-control" id="searchBookByISBNId" name="searchbook" placeholder="Enter ISBN Number">
+
                             </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4 mb-1">
+                                <label for="type" class="form-label">Search Type</label>
+                                <select name="type" class="form-select custom-control" id="typeId">
+                                    <option value="0">Select Any</option>
+                                    <option value="1">Book</option>
+                                    <option value="2">Notes</option>
+                                    <option value="3">Assignment</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <label for="searchBook" class="form-label">Search By Semester</label>
+                                <select class="form-select custom-control" id="semesterId" name="semester">
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <label for="searchBook" class="form-label">Search By FromDate</label>
+                                <input type="date" class="form-control custom-control" id="searchBookByFromDateId" name="searchbook" placeholder="Enter FromDate Number">
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <label for="searchBook" class="form-label">Search By ToDate</label>
+                                <input type="date" class="form-control custom-control" id="searchBookByToDateId" name="searchbook" placeholder="Enter ToDate Number">
+
+                            </div>
+
                         </div>
 
-                        <div class="flex search-btn">
+                        <div class="flex search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
                             <a class="btn search" id="idSearch">Search</a>
                         </div>
+
                     </form>
+
 
                     <!-- book search form  end-->
 
                     <!-- Book table By search start -->
 
-                    <div class="searchTableResult">
-                        <table id="SearchTableId" class="SearchTableBook compact hover order-column row-border">
+                    <div class="searchTableResult table-responsive">
+                        <table id="SearchTableId" class="SearchTableBook  table-hover">
                             <thead>
                                 <tr>
                                     <th>Sr.No</th>
                                     <th>Book Name</th>
-                                    <th>ISBN</th>
+                                    <th>ISBN/Note</th>
+                                    <th>Type</th>
                                     <th>Uploaded Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="searchTableBodyId">
-                               
+
                             </tbody>
                         </table>
                     </div>

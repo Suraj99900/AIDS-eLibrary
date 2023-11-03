@@ -26,6 +26,7 @@ include_once "./leftBar.php";
                         <div class="col">
                             <label for="noteName" class="form-label"><i class="fa-solid fa-signature"></i> Note Name</label>
                             <input type="text" class="form-control custom-control" id="NoteNameId" name="Notename" placeholder="Enter Note Name">
+                            <input type="hidden" class="form-control custom-control" id="userId" name="user" value="<?php echo $_SESSION['username'] ?>">
                         </div>
                         <div class="col">
                             <label for="noteRelatedToSubject" class="form-label"><i class="fa-solid fa-hashtag"></i> Related To Subject</label>
@@ -34,7 +35,8 @@ include_once "./leftBar.php";
                         </div>
                         <div class="col">
                             <label for="sem" class="form-label"><i class="fa-solid fa-hashtag"></i>Semester</label>
-                            <input type="number" class="form-control custom-control" id="semesterId" name="semester" placeholder="Enter Semester">
+                            <select class="form-select custom-control" id="semesterId" name="semester">
+                            </select>
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
@@ -44,12 +46,12 @@ include_once "./leftBar.php";
                         </div>
                         <div class="col">
                             <label for="selectnote" class="form-label"><i class="fa-solid fa-file-arrow-up"></i> Select Note </label>
-                            <input type="file" class="form-control custom-control btn btn-primary" id="nodeFile" name="noteFile">
+                            <input type="file" class="form-control custom-control btn btn-primary" id="noteFileId" name="noteFile">
                         </div>
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <button type="submit" class="btn search">Submit</button>
+                        <a id="uploadNoteId" class="btn search">Submit</a>
                     </div>
                 </form>
             </div>
@@ -105,3 +107,5 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/UploadNoteController.js"></script>

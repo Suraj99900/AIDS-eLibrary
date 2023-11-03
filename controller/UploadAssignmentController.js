@@ -3,11 +3,11 @@ const API_URL = "http://localhost:8000/api";
 
 // Function to handle the file upload
 function uploadFile() {
-    const sBookName = $("#bookNameId").val();
-    const sBookISBN = $("#bookISBNId").val();
+    const sBookName = $("#assignmentNameId").val();
+    const sBookISBN = $("#assignmentRelatedToSubjectId").val();
     const iSemester = $("#semesterId").val();
-    const sBookDescription = $("#bookDescriptionId").val();
-    const fileInput = $('#bookFileId')[0];
+    const sBookDescription = $("#assignmentDescriptionId").val();
+    const fileInput = $('#assignmentFileId')[0];
     const UserName = $('#userId').val();
 
     // Create a FormData object
@@ -17,7 +17,7 @@ function uploadFile() {
     formData.append('semester', iSemester);
     formData.append('description', sBookDescription);
     formData.append('file', fileInput.files[0]);
-    formData.append('file_type', 1);
+    formData.append('file_type', 3);
     formData.append('user_name', UserName);
 
     // Make an AJAX request using FormData
@@ -50,7 +50,7 @@ function handleUploadError(data) {
 }
 
 // Attach the click event handler to the button
-$("#idUploadBook").click(uploadFile);
+$("#uploadAssId").click(uploadFile);
 
 
 $(document).ready(function () {
