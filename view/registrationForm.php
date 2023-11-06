@@ -17,29 +17,29 @@ include_once "./leftBar.php";
                     <h2>Registration Form</h2>
                 </div>
             </div>
-            <div class="upload-btn-section shadow-lg p-5 mb-5 bg-body rounded flex" style="position: relative;">
+            <div class="upload-btn-section shadow-lg p-lg-5 p-sm-5 p-md-5 mb-5 bg-body rounded flex" style="position: relative;">
                 <form>
                     <div class="row align-items-center p-3">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
                             <label for="StaffUserName" class="form-label"><i class="fa-solid fa-user fa-i"></i> UserName</label>
                             <input type="text" class="form-control custom-control " id="staffuserNameId" name="staffname" placeholder="Enter UserName">
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
                             <label for="StaffSecretkey" class="form-label"><i class="fa-solid fa-key fa-i"></i></i>Secret key</label>
                             <input type="text" class="form-control custom-control" id="staffSecretkeyId" name="staffSecretkey" placeholder="Enter Staff Secret key">
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
                             <label for="StaffUserPassword" class="form-label"><i class="fa-solid fa-lock fa-i"></i> Password</label>
                             <input type="password" class="form-control custom-control" id="staffuserPasswordId" name="staffPassword" placeholder="Enter Password">
                         </div>
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <a id="idRegister" class="btn search">Submit</a>
+                        <a id="idRegister" class="btn search  mb-4">Submit</a>
                     </div>
                 </form>
             </div>
@@ -52,9 +52,6 @@ include_once "./leftBar.php";
 
 </div>
 
-<!-- main Content end-->
-
-</div>
 
 <!-- main container end  -->
 

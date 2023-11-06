@@ -229,13 +229,3 @@ tabs.forEach((tab, index) => {
         tabs[index].classList.add('is-active-b');
     })
 })
-
-
-// DataTable connection 
-
-let table = new DataTable('#SearchTableId', {
-    responsive: true,
-    paging: true,  // Enable pagination
-    pageLength: 10,  // Number of rows to display per page
-    lengthMenu: [10, 25, 50, 100],
-});

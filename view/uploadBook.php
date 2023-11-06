@@ -20,38 +20,38 @@ include_once "./leftBar.php";
             </div>
             <!-- upload book section end -->
 
-            <div class="shadow-lg p-5 mb-5 bg-body rounded">
+            <div class="shadow-lg p-sm-1 p-md-2 p-lg-5 mb-lg-5 mb-md-5 mb-sm-2 bg-body rounded">
                 <form>
                     <div class="row align-items-center p-3">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <label for="BookName" class="form-label"><i class="fa-solid fa-signature"></i> Book Name</label>
                             <input type="text" class="form-control custom-control" id="bookNameId" name="bookname" placeholder="Enter Book Name">
                             <input type="hidden" class="form-control custom-control" id="userId" name="user" value="<?php echo $_SESSION['username'] ?>">
                         </div>
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <label for="BookISBN" class="form-label"><i class="fa-solid fa-hashtag"></i> ISBN</label>
                             <input type="text" class="form-control custom-control" id="bookISBNId" name="bookisbn" placeholder="Enter Book ISBN Number">
 
                         </div>
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <label for="sem" class="form-label"><i class="fa-solid fa-hashtag"></i> Semester</label>
                             <select class="form-select custom-control" id="semesterId" name="semester">
                             </select>
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <label for="BookDescription" class="form-label"><i class="fa-solid fa-quote-left"></i> Book Description</label>
                             <textarea name="bookdescription" class="form-control" placeholder="Enter Book Description" id="bookDescriptionId" cols="30" rows="10"></textarea>
                         </div>
-                        <div class="col">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <label for="selectBook" class="form-label"><i class="fa-solid fa-file-arrow-up"></i> Select Book </label>
                             <input type="file" class="form-control custom-control btn btn-primary" id="bookFileId" name="bookFile">
                         </div>
                     </div>
 
                     <div class="flex search-btn mt-5">
-                        <a id="idUploadBook" class="btn search">Submit</a>
+                        <a id="idUploadBook" class="btn search mb-1">Submit</a>
                     </div>
                 </form>
             </div>

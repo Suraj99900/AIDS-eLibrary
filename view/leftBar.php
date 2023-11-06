@@ -1,6 +1,7 @@
 <?php
 include_once "../session.php";
 $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+$iActive = $_GET['iActive'] ? $_GET['iActive'] : '';
 ?>
 
 <!-- main container start -->
@@ -17,13 +18,14 @@ $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
         </div>
 
         <ul class="nav">
-            <li><a href="home.php"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="home.php?iActive=1" class="<?php echo ($iActive == 1 ? "active" : "") ?>"><i class="fa fa-home"></i>Home</a></li>
             <?php
             if ($bIsLogin) {
             ?>
-                <li><a href="uploadScreen.php"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <li><a href="uploadScreen.php?iActive=2" class="<?php echo ($iActive == 2 ? "active" : "") ?>"><i class="fa-solid fa-upload"></i>Upload</a></li>
+                <li><a href="dashBoard.php?iActive=3" class="<?php echo ($iActive == 3 ? "active" : "") ?>"><i class="fa-solid fa-board"></i>Dashboard</a></li>
             <?php } ?>
-            <li><a href="home.php#contact"><i class="fa fa-comments"></i> Contact</a></li>
+            <li><a href="home.php#contact" class="<?php echo ($iActive == 4 ? "active" : "") ?>"><i class="fa fa-comments"></i> Contact</a></li>
 
             <div class="container px-4">
                 <div class="row gx-2">

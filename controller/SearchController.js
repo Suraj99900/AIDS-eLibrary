@@ -5,10 +5,14 @@ const API_URL = "http://localhost:8000/api";
 function searchBooks(page = 1) {
     var bookName = $("#searchBookByNameId").val();
     var bookISBN = $("#searchBookByISBNId").val();
+    var typeId = $("#typeId").val();
+    var semesterId = $("#semesterId").val() !== '0' ? $("#semesterId").val() : '';
+    var dFromDate = $("#searchBookByFromDateId").val();
+    var dToDate = $("#searchBookByToDateId").val();
     // Make an AJAX request using $.get method
 
     $.ajax({
-        url: `${API_URL}/fetch/book?name=` + bookName + `&isbn=` + bookISBN + `&limit=` + 10 + `&page=` + page,
+        url: `${API_URL}/fetch/book?name=` + bookName + `&isbn=` + bookISBN + `&limit=` + 9 + `&page=` + page + `&typeId=` + typeId + `&semester=` + semesterId + `&fromDate=` + dFromDate + `&dToDate=` + dToDate,
         method: 'get',
         success: function (data) {
             handleSearchSuccess(data);
@@ -23,30 +27,40 @@ function searchBooks(page = 1) {
 // Function to handle a successful search
 function handleSearchSuccess(data) {
     if (data.status_code === 200) {
-        const dataTable = $('#SearchTableId').DataTable();
-        dataTable.clear().draw(); // Clear existing data from the table
+        $('#showBookId').html(""); // Clear the existing content
+        var sTemplate = "";
 
         const books = data.body.data;
+        if(books.length == 0){
+            sTemplate +=" <h3 class='contact-title padd-15 typing'>No Found Record.</h3>";
+        }
         books.forEach((book, index) => {
-            var sFileType = "";
-            if (book.file_type == 1) {
-                sFileType = "Book";
-            } else if (book.file_type == 2) {
-                sFileType = "Note";
-            } else if (book.file_type == 3) {
-                sFileType = "Assignment";
+            var sType = "";
+            var color = "";
+            if (book['file_type'] == 1) {
+                sType = "Book";
+                color = "rgba(0,0,0,0.0);"
+            } else if (book['file_type'] == 2) {
+                sType = "Notes";
+                color = "rgba(0,0,0,0.28);"
+            } else {
+                sType = "Assignment";
+                color = "rgba(0,0,0,0.48);"
             }
-            const row = [
-                ++index,
-                book.name,
-                book.isbn ? book.isbn : '',
-                sFileType,
-                new Date(book.added_on).toLocaleString(),
-                `<button class='btn download' data-url='${book.file_name}' data-index='${index}'><i class='fa-solid fa-circle-arrow-down'></i></button>`
-            ];
-            dataTable.row.add(row).draw();
-
+            sTemplate += "<div class='card col-sm-12 col-md-6 col-lg-4 p-5 ' style='background:" + color + "'>";
+            sTemplate += "<div class='card-body'>";
+            sTemplate += "<h4 class='card-title '>" + book['name'].toUpperCase() + "</h4>";
+            sTemplate += "<p class='card-text' ><small class='text-muted'> <b>ISBN/RELEATED : </b> " + book['isbn'] + "</small></p>";
+            sTemplate += "<p class='card-text' ><small class='text-muted'> <b>Semester : </b> " + book['sem'] + "</small></p>";
+            sTemplate += "<p class='card-text' ><small class='text-muted'> <b>Type : </b> " + sType + "</small></p>";
+            sTemplate += "<p class='card-text'><small class='text-muted'> <b>Desciption : </b> " + book['description'] + "</small></p>";
+            sTemplate += "<p class='card-text'><small class='text-muted'> <b>Added On : </b> " + book['added_on'] + "</small></p>";
+            sTemplate += "</div>";
+            sTemplate += "<div class='flex' style='align-items: center;display: flex;justify-content: center;'><button style='width: 50%;' class='btn download' data-url='" + book.file_name + "' data-index='" + index + "'><i class='fa-solid fa-circle-arrow-down'></i></button></div>";
+            sTemplate += "</div>";
         });
+        $('#showBookId').append(sTemplate);
+
         // Handle pagination
         const currentPage = data.body.current_page;
         const lastPage = data.body.last_page;
@@ -67,7 +81,7 @@ function handleSearchSuccess(data) {
             pagination.append('<button class="btn next-page">Next</button>');
         }
 
-        $('#SearchTableId_paginate').html(pagination);
+        $('#paginationContainer').html(pagination);
 
         // Attach click handlers for pagination
         $('.pagination button').click(function () {
@@ -82,6 +96,7 @@ function handleSearchSuccess(data) {
         });
     }
 }
+
 
 
 // Function to handle AJAX error
@@ -148,7 +163,7 @@ function downloadFile(url, index) {
 
 // Initial search when the document is ready
 $(document).ready(() => {
-    searchBooks();
+
     // Attach the click event handler to the search button
     $("#idSearch").click(searchBooks);
 
@@ -165,7 +180,7 @@ $(document).ready(() => {
 
             // Add default option
             semesterId.append($('<option>', {
-                value: '',
+                value: '0',
                 text: 'Select Any'
             }));
 
@@ -177,11 +192,15 @@ $(document).ready(() => {
                 }));
             });
 
+            searchBooks();
+
         },
         error: function (xhr, status, error) {
             // Handle errors here
             console.error(xhr.responseText);
         }
     });
+
+
 });
 

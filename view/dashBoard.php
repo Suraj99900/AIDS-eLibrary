@@ -2,57 +2,62 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+
+$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+if (!$bIsLogin) {
+    header("Location: loginScreen.php", true, 301);
+    exit;
+}
 ?>
-
-
 
 <!-- main Content start -->
 <div class="main-content">
-
-
-
-
-    <!-- home section start -->
-    <section class="upload section " id="upload">
+    <section class="dashboard section">
         <div class="container">
-
-            <!-- upload Section form  start-->
+            <!-- Dashboard Section form  start-->
             <div class="row">
                 <div class="section-title padd-15">
-                    <h2>Staff Login</h2>
+                    <h2>Dashboard</h2>
                 </div>
             </div>
-            <h3 class="contact-title padd-15 typing">Welcome to AI&DS E-Library </h3>
-            <div class="upload-btn-section shadow-lg p-lg-5 p-sm-5 p-md-5 mb-5 bg-body rounded flex" style="position: relative;">
-                <form>
-                    <div class="row align-items-center p-3">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <label for="StaffUserName" class="form-label"><i class="fa-solid fa-user fa-i"></i> UserName</label>
-                            <input type="text" class="form-control custom-control " id="staffuserNameId" name="staffname" placeholder="Enter UserName">
+
+            <table>
+                <thead>
+                    <div class="row action button-operation">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <li>
+                                <h4>Staff Managment</h4>
+                            </li>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <li>
+                                <h4>Student Managment</h4>
+                            </li>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <li>
+                                <h4>Book/Notes List</h4>
+                            </li>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <li>
+                                <h4>Book Issused</h4>
+                            </li>
                         </div>
                     </div>
-                    <div class="row align-items-center p-3">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <label for="StaffUserPassword" class="form-label"><i class="fa-solid fa-lock fa-i"></i> Password</label>
-                            <input type="password" class="form-control custom-control" id="staffuserPasswordId" name="staffPassword" placeholder="Enter Password">
-                        </div>
-                    </div>
+                    <div class="data-with-body">
 
-                    <div class="flex search-btn mt-5">
-                        <a id="idLogin" class="btn search mb-4">Submit</a>
                     </div>
-                </form>
-            </div>
-
+                </thead>
+            </table>
 
         </div>
     </section>
-    <!-- home section end -->
-
 
 </div>
-
 <!-- main Content end-->
+
+
 
 
 <!-- style switcher start -->
@@ -92,4 +97,3 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
-<script src="../controller/LoginController.js"></script>
