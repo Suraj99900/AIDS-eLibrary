@@ -6,6 +6,11 @@
     --bg-black-50: #e8dfec;
     --text-black-900: #302e4d;
     --text-black-700: #504e70;
+
+    --first-color: #ffcbcb;
+    --second-color: #ffb5b5;
+    --third-color: #407088;
+    --fourth-color: #132743;
 }
 
 body.dark {
@@ -172,10 +177,11 @@ li {
     font-size: 14px;
 }
 
-.login{
+.login {
     background-color: rgb(235, 193, 115);
 }
-.register{
+
+.register {
     background-color: rgb(224, 62, 33);
 }
 
@@ -791,12 +797,12 @@ h3.my-profession {
     visibility: hidden;
 }
 
-form{
+form {
     flex: 0 0 100%;
     max-width: 100%;
 }
 
-form .custom-control{
+form .custom-control {
     width: 100%;
     height: 50px;
     border-radius: 25px;
@@ -808,18 +814,18 @@ form .custom-control{
     transition: all 0.3s ease;
 }
 
-form #seachHelp{
+form #seachHelp {
     color: rgba(0, 0, 0, 0.459);
 }
 
-form .search-btn{
+form .search-btn {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-right: 20px;
 }
 
-.searchTableResult{
+.searchTableResult {
     margin-top: 100px;
     overflow: scroll;
 }
@@ -1383,26 +1389,27 @@ td {
     color: var(--text-black-700);
 }
 
-.flot-bottom{
+.flot-bottom {
     position: relative;
     bottom: -68px;
 }
 
-.upload-btn-section{
+.upload-btn-section {
     display: flex;
     justify-content: space-around;
     /* align-content: center; */
     align-items: stretch;
 }
 
-.center-flex{
+.center-flex {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
-.right-flex{
+
+.right-flex {
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -1410,6 +1417,91 @@ td {
     text-align: center;
 }
 
+/* --------------------------------- Dashboard section -------------------- */
+
+.sidebar__toggle {
+    display: none;
+}
+
+.dashboard_container {
+    display: grid;
+    grid-template-columns: 14rem auto;
+    background-color: var(--bg-black-900);
+    padding: 2rem;
+    margin-bottom: 5rem;
+    gap: 2rem;
+}
+
+.dashboard aside a {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 2.6rem;
+}
+
+.dashboard aside ul li a {
+    border-bottom: 1px solid var(--skin-color);
+}
+
+.dashboard aside li a:hover {
+    background: var(--bg-black-50);
+}
+
+
+.dashboard aside a.active {
+    background-color: var(--bg-black-50);
+}
+
+.dashboard main {
+    margin-left: 1.5rem;
+}
+
+.dashboard main h2 {
+    margin: 0 0 2rem 0;
+    line-height: 1;
+    font-size: 24px;
+    color: var(--skin-color);
+}
+
+.dashboard aside h5{
+    font-size: 10px;
+    color: var(--skin-color);
+}
+
+.dashboard aside li a i{
+    color: var(--skin-color);
+}
+
+.dashboard main table {
+    width: 100%;
+    text-align: left;
+}
+
+.dashboard main table th {
+    font-size: 12px;
+    background: var(--bg-black-50);
+    padding: 0.8rem;
+    color: var(--text-black-900);
+}
+
+.dashboard main table td {
+    font-size: 10px;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--skin-color);
+}
+
+.dashboard main table tr:hover td {
+    background-color: var(--first-color);
+    color: var(--text-black-900);
+    cursor: default;
+}
+
+td a i{
+    width: 1.5rem;
+    font-size: 16px;
+    margin: 0 3px;
+    color: var(--skin-color);
+}
 
 
 @media (max-width:1199px) {
@@ -1437,7 +1529,41 @@ td {
     .gallery .preview-box {
         transform: translate(-50%, -50%);
     }
-    
+
+    .dashboard_container {
+        grid-template-columns: 4.5rem auto;
+        padding: 0;
+        background: transparent;
+    }
+
+    ul {
+        padding-left: 1rem;
+    }
+
+    .dashboard aside li a {
+        padding: 2rem;
+    }
+
+    .dashboard aside h5 {
+        display: none;
+    }
+
+    .dashboard main table tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dashboard main table thead {
+        display: none;
+    }
+
+    .dashboard main table tr:nth-child(even) {
+        background: var(--first-color);
+    }
+
+    .dashboard main table tr:hover td {
+        background: transparent;
+    }
 }
 
 @media (max-width:991px) {
@@ -1543,5 +1669,58 @@ td {
 
     .gallery .collection__gallery .item {
         margin: 0;
+    }
+
+    /*--------------------- Dashboard---------------- */
+
+    .dashboard_container {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .dashboard main {
+        margin: 0;
+    }
+
+    .dashboard main h2 {
+        margin-top: 1rem;
+    }
+
+    .dashboard aside {
+        position: fixed;
+        box-shadow: 2rem 0 4rem rgba(0, 0, 0, 0.4);
+        height: 100vh;
+        background: var(--bg-black-100);
+        left: -100%;
+        top: 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .dashboard .sidebar__toggle {
+        display: inline-block;
+        background: var(--first-color);
+        color: var(--text-black-900);
+        position: fixed;
+        right: 0;
+        top: 12rem;
+        z-index: 1;
+        width: 2.5rem;
+        border-radius: 50% 0 0 50%;
+        font-size: 1.3rem;
+        cursor: pointer;
+        box-shadow: -1rem 0 2rem rgba(0, 0, 0, 0.4);
+    }
+
+    .dashboard aside a h5 {
+        display: inline-block;
+    }
+
+    #hide__sidebar-btn {
+        display: none;
     }
 }

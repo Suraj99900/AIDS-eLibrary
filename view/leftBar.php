@@ -23,9 +23,10 @@ $iActive = $_GET['iActive'] ? $_GET['iActive'] : '';
             if ($bIsLogin) {
             ?>
                 <li><a href="uploadScreen.php?iActive=2" class="<?php echo ($iActive == 2 ? "active" : "") ?>"><i class="fa-solid fa-upload"></i>Upload</a></li>
-                <li><a href="dashBoard.php?iActive=3" class="<?php echo ($iActive == 3 ? "active" : "") ?>"><i class="fa-solid fa-board"></i>Dashboard</a></li>
+                <li><a href="manageIssueBook.php?iActive=3" class="<?php echo ($iActive == 3 ? "active" : "") ?>"><i class="fa-solid fa-grip-vertical"></i>Dashboard</a></li>
             <?php } ?>
-            <li><a href="home.php#contact" class="<?php echo ($iActive == 4 ? "active" : "") ?>"><i class="fa fa-comments"></i> Contact</a></li>
+            <li><a href="studentInfo.php?iActive=4" class="<?php echo ($iActive == 4 ? "active" : "") ?>"><i class="fa-solid fa-circle-info"></i> Student Info</a></li>
+            <li><a href="home.php#contact" class="<?php echo ($iActive == 5 ? "active" : "") ?>"><i class="fa fa-comments"></i> Contact</a></li>
 
             <div class="container px-4">
                 <div class="row gx-2">

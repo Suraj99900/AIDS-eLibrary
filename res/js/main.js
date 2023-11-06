@@ -228,4 +228,29 @@ tabs.forEach((tab, index) => {
         }
         tabs[index].classList.add('is-active-b');
     })
-})
+});
+
+
+
+// side bar for bashboard
+
+const sidebar = document.querySelector('aside');
+const showSidebarBtn = document.querySelector('#show__sidebar-btn');
+const hideSidebarBtn = document.querySelector('#hide__sidebar-btn');
+
+
+// show side bar on small devices
+const showSidebar = () =>{
+    sidebar.style.left = '0';
+    showSidebarBtn.style.display = 'none';
+    hideSidebarBtn.style.display = 'inline-block';
+}
+
+// hide side bar on small devices
+const hideSidebar = () =>{
+    sidebar.style.left = '-100%';
+    hideSidebarBtn.style.display = 'none';
+    showSidebarBtn.style.display = 'inline-block';
+}
+showSidebarBtn.addEventListener('click',showSidebar);
+hideSidebarBtn.addEventListener('click',hideSidebar);
