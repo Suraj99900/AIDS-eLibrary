@@ -56,39 +56,33 @@ if (!$bIsLogin) {
 
             <main>
                 <h2 class="text-center"><i class="fa-solid fa-book-open-reader"></i> Manage Available Book</h2>
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <label for="searchBook" class="form-label">Search Book Name/ISBN</label>
+                        <input type="search" class="form-control custom-control" id="searchBookByNameISBNId" name="searchbook" placeholder="Enter Book Name/ISBN">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 mt-4 search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
+                        <a class="btn search" id="idSearch">Search</a>
+                    </div>
+                </div>
                 <table>
                     <thead>
                         <tr>
                             <th>Sr.no</th>
                             <th>Book Name</th>
                             <th>ISBN No</th>
-                            <th>Issue Date</th>
-                            <th>Student ZPRN No</th>
-                            <th>Staff</th>
+                            <th>Added Date</th>
+                            <th>Added By Staff</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
+                    <tbody id="manageBookById">
+
                     </tbody>
                 </table>
+                <div class="row p-2 m-2 right-flex">
+                    <div id="paginationContainer" class="pagination col-md col-sm col-lg"></div>
+                </div>
             </main>
 
         </div>
@@ -137,3 +131,5 @@ if (!$bIsLogin) {
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/manageAvailableBook.js"></script>

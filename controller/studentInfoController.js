@@ -31,7 +31,7 @@ function addStudent() {
 
 // Function to handle a successful add
 function handleAddSuccess(data) {
-    if (data.status_code === 200) {
+    if (data.status_code === 201) {
         alert(data.message);
         // You can optionally refresh the student list here
         window.location.href = "studentInfo.php?iActive=4";
