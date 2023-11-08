@@ -57,12 +57,15 @@ if (!$bIsLogin) {
             <main>
                 <h2 class="text-center"><i class="fa-solid fa-book-open-reader"></i> Manage Available Book</h2>
                 <div class="row align-items-center p-3">
-                    <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
                         <label for="searchBook" class="form-label">Search Book Name/ISBN</label>
                         <input type="search" class="form-control custom-control" id="searchBookByNameISBNId" name="searchbook" placeholder="Enter Book Name/ISBN">
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-4 mt-4 search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-4 search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
                         <a class="btn search" id="idSearch">Search</a>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-4 search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
+                        <a class="btn addBook" href="AddAvailableBook.php?iActive=4" id="idAddBook"><i class="fa-solid fa-plus"></i> Book</a>
                     </div>
                 </div>
                 <table>
@@ -89,9 +92,40 @@ if (!$bIsLogin) {
     </section>
 
 </div>
+
 <!-- main Content end-->
 
+<!-- manage book updtaed modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="updatedBookModalId" tabindex="-1" aria-labelledby="updatedBookModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updatedBookModal">Updated Book</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="form-label"><i class="fa-solid fa-user"></i> Book Name</label>
+                        <input type="text" class="form-control custom-control" id="updateNameId" name="book_name" placeholder="Enter book name">
+                        <input type="hidden" class="form-control custom-control" id="bookId" name="bookId">
+                        <input type="hidden" class="form-control custom-control" id="userId" name="user_name" value="<?php echo $_SESSION['username'] ?>">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <label class="form-label"><i class="fa-solid fa-hashtag"></i> ISBN</label>
+                        <input type="text" class="form-control custom-control" id="updateISBNId" name="isbn_no" placeholder="Enter Book ISBN Number">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="idUpDateBook" class="btn btn-primary">Updated</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- style switcher start -->
