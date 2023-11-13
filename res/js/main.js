@@ -1,4 +1,5 @@
-
+// Main API URL
+var API_URL = "http://localhost:8000/api";
 
 // =============== types
 const typed = document.querySelector(".typing");

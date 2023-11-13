@@ -23,7 +23,7 @@ if (!$bIsLogin) {
         </div>
         <div class="dashboard dashboard_container">
             <button id="show__sidebar-btn" class="sidebar__toggle "><i class="fa-solid fa-arrow-right"></i></button>
-            <button id="hide__sidebar-btn" class="sidebar__toggle" ><i class="fa-solid fa-arrow-left"></i></button>
+            <button id="hide__sidebar-btn" class="sidebar__toggle"><i class="fa-solid fa-arrow-left"></i></button>
             <aside>
                 <ul>
                     <li>
@@ -56,39 +56,35 @@ if (!$bIsLogin) {
 
             <main>
                 <h2 class="text-center"><i class="fa-regular fa-id-card px-2"></i>Manage Issue Book</h2>
-                <a href="#" class="btn issue-book">Issue Book</a>
-                <table>
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <input type="search" class="form-control custom-control" id="searchById" name="searchbook" placeholder="Seacrh By book name , student name , ISBN and ZPRN...">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6  search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
+                        <a class="btn addBook" data-bs-toggle="modal" data-bs-target="#AddBookIssuesModalId" id="idAddBook"><i class="fa-solid fa-plus"></i> Issue</a>
+                    </div>
+                </div>
+                <table id="bookIssuesTable">
                     <thead>
                         <tr>
                             <th>Sr.no</th>
+                            <th>Student Name</th>
+                            <th>ZPRN</th>
                             <th>Book Name</th>
                             <th>ISBN No</th>
                             <th>Issue Date</th>
-                            <th>Student ZPRN No</th>
-                            <th>Staff</th>
+                            <th>Added By</th>
+                            <th>Is Return</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr><tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
+
                     </tbody>
                 </table>
+                <div class="row p-2 m-2 right-flex">
+                    <div id="paginationContainer" class="pagination col-md col-sm col-lg"></div>
+                </div>
             </main>
 
         </div>
@@ -97,7 +93,39 @@ if (!$bIsLogin) {
 </div>
 <!-- main Content end-->
 
-
+<!-- manage issues book modal -->
+<!-- Add Modal -->
+<div class="modal fade" id="AddBookIssuesModalId" tabindex="-1" aria-labelledby="AddBookIssuesModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddBookIssuesModal">Book Issues</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <!-- <label class="form-label"><i class="fa-solid fa-user"></i>Select Student</label> -->
+                        <select class="form-control custom-control" id="studentNameId" name="student" placeholder="Select Student" style="width: 100%;">
+                            <!-- Options will be dynamically added using JavaScript -->
+                        </select>
+                        <input type="hidden" class="form-control custom-control" id="bookId" name="bookId">
+                        <input type="hidden" class="form-control custom-control" id="userId" name="user_name" value="<?php echo $_SESSION['username'] ?>">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <select class="form-control custom-control" id="bookNameID" name="bookName" placeholder="Select Book" style="width: 100%;">
+                            <!-- Options will be dynamically added using JavaScript -->
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="idAddIssues" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- style switcher start -->
@@ -137,3 +165,5 @@ if (!$bIsLogin) {
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/manageIssueBookController.js"></script>

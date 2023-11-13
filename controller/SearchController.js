@@ -1,5 +1,4 @@
-// Define the API URL
-const API_URL = "http://localhost:8000/api";
+
 
 // Function to handle the file search
 function searchBooks(page = 1) {

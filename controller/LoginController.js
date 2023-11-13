@@ -1,5 +1,5 @@
 // Register User
-var API_URL = "http://localhost:8000/api";
+
 $("#idLogin").click(function() {
     var sStaffName = $("#staffuserNameId").val();
     var sStaffPassword = $("#staffuserPasswordId").val();

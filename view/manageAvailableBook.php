@@ -58,13 +58,9 @@ if (!$bIsLogin) {
                 <h2 class="text-center"><i class="fa-solid fa-book-open-reader"></i> Manage Available Book</h2>
                 <div class="row align-items-center p-3">
                     <div class="col-sm-12 col-md-6 col-lg-6">
-                        <label for="searchBook" class="form-label">Search Book Name/ISBN</label>
                         <input type="search" class="form-control custom-control" id="searchBookByNameISBNId" name="searchbook" placeholder="Enter Book Name/ISBN">
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-3 mt-4 search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
-                        <a class="btn search" id="idSearch">Search</a>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-3 mt-4 search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
+                    <div class="col-sm-12 col-md-6 col-lg-6  search-btn" style="display: flex; justify-content: right; align-items: flex-end; ">
                         <a class="btn addBook" href="AddAvailableBook.php?iActive=4" id="idAddBook"><i class="fa-solid fa-plus"></i> Book</a>
                     </div>
                 </div>
@@ -95,7 +91,7 @@ if (!$bIsLogin) {
 
 <!-- main Content end-->
 
-<!-- manage book updtaed modal -->
+<!-- manage book update modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="updatedBookModalId" tabindex="-1" aria-labelledby="updatedBookModal" aria-hidden="true">
@@ -166,4 +162,4 @@ if (!$bIsLogin) {
 include_once "./CDN_Footer.php";
 ?>
 
-<script src="../controller/manageAvailableBook.js"></script>
+<script src="../controller/manageAvailableBookController.js"></script>

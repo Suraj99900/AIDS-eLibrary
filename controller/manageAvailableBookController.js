@@ -1,5 +1,4 @@
-// Define the API URL
-const API_URL = "http://localhost:8000/api/books"; // Replace with your actual API endpoint
+
 var currentPage = 1;
 var paginationData;
 // Initialize a counter for dynamic fields
@@ -39,7 +38,7 @@ function addBook() {
 
 
     $.ajax({
-        url: API_URL,
+        url: API_URL+"/books",
         method: "POST",
         data: { "bookData": bookData },
         success: function (data) {
@@ -62,7 +61,7 @@ function addBook() {
 function fetchBooks(page = 1) {
     var sSearch = $('#searchBookByNameISBNId').val();
     $.ajax({
-        url: API_URL + "?page=" + page + '&search=' + sSearch,
+        url: API_URL + "/books?page=" + page + '&search=' + sSearch,
         type: 'GET',
         success: function (response) {
             const books = response.books.data;
@@ -128,7 +127,7 @@ function fetchBooks(page = 1) {
 // Function to view book details by ID
 function viewBook(bookId) {
     $.ajax({
-        url: `${API_URL}/${bookId}`,
+        url: `${API_URL+"/books"}/${bookId}`,
         type: 'GET',
         success: function (data) {
             // Handle the retrieved book data for viewing
@@ -154,7 +153,7 @@ function viewBook(bookId) {
 // Function to update book details by ID
 function updateBook(bookId, updatedData) {
     $.ajax({
-        url: `${API_URL}/${bookId}`,
+        url: `${API_URL+"/books"}/${bookId}`,
         method: "PUT",
         data: updatedData,
         success: function (data) {
@@ -178,7 +177,7 @@ function updateBook(bookId, updatedData) {
 // function for delete the recored by id
 function deleteBook(bookId) {
     $.ajax({
-        url: `${API_URL}/${bookId}`,
+        url: `${API_URL+"/books"}/${bookId}`,
         method: "DELETE",
         success: ((data) => {
             if (data.status_code === 200) {
@@ -263,8 +262,10 @@ $(document).ready(function () {
     // Fetch available books for the first page when the page loads
     fetchBooks(currentPage);
 
-    // Attach the click event handler to the search button
-    $("#idSearch").click(fetchBooks);
+    $('#searchBookByNameISBNId').on('input', function () {
+        // Call fetchBookIssues function with the updated search value
+        fetchBooks(currentPage);
+    });
 
     // Attched the click event handler to add the book in database
     $('#idAddSubmit').click(addBook);

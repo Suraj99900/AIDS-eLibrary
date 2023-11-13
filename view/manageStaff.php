@@ -55,41 +55,32 @@ if (!$bIsLogin) {
             </aside>
 
             <main>
-                <h2 class="text-center" ><i class="fa-solid fa-user-tie px-2"></i>Manage Staff</h2>
-                <a href="#" class="btn issue-book">Issue Book</a>
-                <table>
+                <h2 class="text-center"><i class="fa-solid fa-user-tie px-2"></i>Manage Staff</h2>
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <input type="search" class="form-control custom-control" id="searchUserId" name="searchUser" placeholder="Seacrh By book name , student name , ISBN and ZPRN...">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3" style="display: flex; justify-content: right; align-items: flex-end; ">
+                        <input type="checkbox" class="btn-check" id="toggleShowFreezeUser" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="toggleShowFreezeUser"><i class="fa-solid fa-rotate-left"></i></label><br>
+                    </div>
+                </div>
+                <table id="userTableId">
                     <thead>
                         <tr>
-                            <th>Sr.no</th>
-                            <th>Book Name</th>
-                            <th>ISBN No</th>
-                            <th>Issue Date</th>
-                            <th>Student ZPRN No</th>
-                            <th>Staff</th>
+                            <th>Sr.No</th>
+                            <th>Staff Name</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
+                    <tbody id="userTableBodyId">
+
                     </tbody>
                 </table>
+                <div class="row p-2 m-2 right-flex">
+                    <div id="paginationContainer" class="pagination col-md col-sm col-lg"></div>
+                </div>
             </main>
 
         </div>
@@ -98,6 +89,35 @@ if (!$bIsLogin) {
 </div>
 <!-- main Content end-->
 
+
+<!-- manage Staff book modal -->
+<!-- Add Modal -->
+<div class="modal fade" id="changePasswordModalId" tabindex="-1" aria-labelledby="changePasswordModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModal">Update Passowrd</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <input type="text" class="form-control custom-control" id="oldPasswordId" name="oldPassword" placeholder="Enter old password">
+                        <input type="hidden" class="form-control custom-control" id="userID" name="userId">
+                        <input type="hidden" class="form-control custom-control" id="userName" name="user_name" value="<?php echo $_SESSION['username'] ?>">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <input type="text" class="form-control custom-control" id="NewPasswordId" name="NewPassword" placeholder="Enter new password">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="updatePasswordId" class="btn btn-primary">Change</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -138,3 +158,5 @@ if (!$bIsLogin) {
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/manageStaffController.js"></script>

@@ -56,40 +56,35 @@ if (!$bIsLogin) {
 
             <main>
                 <h2 class="text-center"><i class="fa-solid fa-arrow-rotate-left px-2"></i>Manage Return Book</h2>
-                <a href="#" class="btn issue-book">Issue Book</a>
-                <table>
+                <div class="row align-items-center p-3">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <input type="search" class="form-control custom-control" id="searchReturnById" name="searchbook" placeholder="Seacrh By book name , student name , ISBN and ZPRN...">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3"  style="display: flex; justify-content: right; align-items: flex-end; ">
+                        <input type="checkbox" class="btn-check" id="togglePendingReturns" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="togglePendingReturns"><i class="fa-solid fa-rotate-left"></i></label><br>
+                    </div>
+                </div>
+                <table id="returnTableId">
                     <thead>
                         <tr>
                             <th>Sr.no</th>
+                            <th>Student Name</th>
+                            <th>ZPRN</th>
                             <th>Book Name</th>
                             <th>ISBN No</th>
                             <th>Issue Date</th>
-                            <th>Student ZPRN No</th>
-                            <th>Staff</th>
+                            <th>Is Return</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>java</td>
-                            <td>1258se69</td>
-                            <td>14/04/2023</td>
-                            <td>ZPRN001</td>
-                            <td>test staff</td>
-                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr>
+                    <tbody id="returnBodyId">
+
                     </tbody>
                 </table>
+                <div class="row p-2 m-2 right-flex">
+                    <div id="paginationContainer" class="pagination col-md col-sm col-lg"></div>
+                </div>
             </main>
 
         </div>
@@ -138,3 +133,24 @@ if (!$bIsLogin) {
 <?php
 include_once "./CDN_Footer.php";
 ?>
+
+<script src="../controller/manageIssueBookController.js"></script>
+<script>
+    $(document).ready(() => {
+        var iShow = 0;
+        $('#togglePendingReturns').change(function() {
+            const showPendingReturns = $(this).prop('checked') ? 1 : 0;
+            iShow = $(this).prop('checked') ? 1 : 0;
+            fetchPenddingToReturn(1, showPendingReturns,iShow);
+        });
+
+        fetchPenddingToReturn(1,iShow);
+
+        $('#searchReturnById').on('input', function() {
+            // Call fetchBookIssues function with the updated search value
+            fetchPenddingToReturn(1,iShow);
+        });
+
+
+    });
+</script>

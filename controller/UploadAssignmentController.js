@@ -1,5 +1,4 @@
-// Define the API URL
-const API_URL = "http://localhost:8000/api";
+
 
 // Function to handle the file upload
 function uploadFile() {
