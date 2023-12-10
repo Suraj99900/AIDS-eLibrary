@@ -50,12 +50,12 @@ $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
                                 <select class="form-select custom-control" id="semesterId" name="semester">
                                 </select>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-4 d-none-custom">
                                 <label for="searchBook" class="form-label">Search By FromDate</label>
                                 <input type="date" class="form-control custom-control" id="searchBookByFromDateId" name="searchbook" placeholder="Enter FromDate Number">
 
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-4 d-none-custom">
                                 <label for="searchBook" class="form-label">Search By ToDate</label>
                                 <input type="date" class="form-control custom-control" id="searchBookByToDateId" name="searchbook" placeholder="Enter ToDate Number">
 

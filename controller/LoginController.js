@@ -26,7 +26,7 @@ $("#idLogin").click(function() {
                     success: function(data) {
                         console.log(data);
                         if(data == 1){
-                            window.location.href = "../view/uploadScreen.php";
+                            window.location.href = "../view/uploadScreen.php?staffAccess=1";
                         }
                     },
                     error: function(data) {

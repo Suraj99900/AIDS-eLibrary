@@ -22,7 +22,7 @@ function typeing() {
     }
 }
 
-setInterval(typeing, 150);
+
 
 
 

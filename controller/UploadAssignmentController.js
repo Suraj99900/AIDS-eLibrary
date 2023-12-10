@@ -8,6 +8,7 @@ function uploadFile() {
     const sBookDescription = $("#assignmentDescriptionId").val();
     const fileInput = $('#assignmentFileId')[0];
     const UserName = $('#userId').val();
+    var dSubmissionDate = $('#submissionDateId').val();
 
     // Create a FormData object
     const formData = new FormData();
@@ -18,6 +19,7 @@ function uploadFile() {
     formData.append('file', fileInput.files[0]);
     formData.append('file_type', 3);
     formData.append('user_name', UserName);
+    formData.append('submission_date', dSubmissionDate);
 
     // Make an AJAX request using FormData
     $.ajax({
@@ -37,7 +39,7 @@ function handleUploadSuccess(data) {
         // Registration was successful
         alert(data.message);
         // Redirect to another page (example)
-        window.location.href = "uploadScreen.php";
+        window.location.href = "uploadScreen.php?staffAccess=1";
     }
 }
 

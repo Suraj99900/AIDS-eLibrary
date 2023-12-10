@@ -10,6 +10,14 @@ include_once "./leftBar.php";
 <div class="main-content">
     <section class="upload-Note section">
 
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-4">
+                <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="uploadScreen.php?iActive=2&staffAccess=1">Upload Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Upload Notes</li>
+            </ol>
+        </nav>
+
         <div class="container">
 
             <!-- upload Note section start -->

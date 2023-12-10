@@ -9,6 +9,13 @@ include_once "./leftBar.php";
 
     <!-- home section start -->
     <section class="upload section " id="upload">
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-4">
+                <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registration Form</li>
+            </ol>
+        </nav>
         <div class="container">
 
             <!-- upload Section form  start-->

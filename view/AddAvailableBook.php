@@ -9,6 +9,15 @@ include_once "./leftBar.php";
 
     <!-- home section start -->
     <section class="bookAvailable section " id="bookAvailableId">
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-4">
+                <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="manageAvailableBook.php?iActive=3&staffAccess=1">Manage Available Book</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add Available Book</li>
+            </ol>
+        </nav>
+
         <div class="container">
 
             <!-- upload Section form  start-->
@@ -79,4 +88,4 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
-<script src="../controller/manageAvailableBook.js"></script>
+<script src="../controller/manageAvailableBookController.js"></script>

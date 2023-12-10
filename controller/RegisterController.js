@@ -23,7 +23,7 @@ $("#idRegister").click(function() {
                 // Registration was successful
                 alert(data.message);
                 // Redirect to another page
-                window.location.href = "loginScreen.php";
+                window.location.href = "loginScreen.php?staffAccess=1";
             }
         },
         error: function(data) {

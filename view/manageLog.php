@@ -5,7 +5,7 @@ include_once "./leftBar.php";
 
 $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
 if (!$bIsLogin) {
-    header("Location: loginScreen.php", true, 301);
+    header("Location: loginScreen.php?staffAccess=1", true, 301);
     exit;
 }
 ?>
@@ -13,6 +13,12 @@ if (!$bIsLogin) {
 <!-- main Content start -->
 <div class="main-content">
     <section class="section ">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-4">
+                <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Manage Log</li>
+            </ol>
+        </nav>
         <div class="container">
             <!-- Dashboard Section form  start-->
             <div class="row">
@@ -23,31 +29,31 @@ if (!$bIsLogin) {
         </div>
         <div class="dashboard dashboard_container">
             <button id="show__sidebar-btn" class="sidebar__toggle "><i class="fa-solid fa-arrow-right"></i></button>
-            <button id="hide__sidebar-btn" class="sidebar__toggle" ><i class="fa-solid fa-arrow-left"></i></button>
+            <button id="hide__sidebar-btn" class="sidebar__toggle"><i class="fa-solid fa-arrow-left"></i></button>
             <aside>
                 <ul>
                     <li>
-                        <a href="manageIssueBook.php?iActive=3" class="shadow-lg p-3 mb-5 rounded "><i class="fa-regular fa-id-card"></i>
+                        <a href="manageIssueBook.php?iActive=3&staffAccess=1" class="shadow-lg p-3 mb-5 rounded "><i class="fa-regular fa-id-card"></i>
                             <h5>Manage Issue Book</h5>
                         </a>
                     </li>
                     <li>
-                        <a href="manageReturnBook.php?iActive=3" class="shadow-lg p-3 mb-5 rounded"><i class="fa-solid fa-arrow-rotate-left"></i>
+                        <a href="manageReturnBook.php?iActive=3&staffAccess=1" class="shadow-lg p-3 mb-5 rounded"><i class="fa-solid fa-arrow-rotate-left"></i>
                             <h5>Manage Return Book</h5>
                         </a>
                     </li>
                     <li>
-                        <a href="manageAvailableBook.php?iActive=3" class="shadow-lg p-3 mb-5 rounded"><i class="fa-solid fa-book-open-reader"></i>
+                        <a href="manageAvailableBook.php?iActive=3&staffAccess=1" class="shadow-lg p-3 mb-5 rounded"><i class="fa-solid fa-book-open-reader"></i>
                             <h5>Manage Available Book</h5>
                         </a>
                     </li>
                     <li>
-                        <a href="manageStaff.php?iActive=3" class="shadow-lg p-3 mb-5 rounded"><i class="fa-solid fa-user-tie"></i>
+                        <a href="manageStaff.php?iActive=3&staffAccess=1" class="shadow-lg p-3 mb-5 rounded"><i class="fa-solid fa-user-tie"></i>
                             <h5>Manage Staff</h5>
                         </a>
                     </li>
                     <li>
-                        <a href="manageLog.php?iActive=3" class="shadow-lg p-3 mb-5 rounded active"><i class="fa-solid fa-tarp"></i>
+                        <a href="manageLog.php?iActive=3&staffAccess=1" class="shadow-lg p-3 mb-5 rounded active"><i class="fa-solid fa-tarp"></i>
                             <h5>Manage Log</h5>
                         </a>
                     </li>
@@ -76,15 +82,16 @@ if (!$bIsLogin) {
                             <td>14/04/2023</td>
                             <td>ZPRN001</td>
                             <td>test staff</td>
-                            <td><a  href="#"><i class="fa-solid fa-eye"></i></a> <a  href="#"><i class="fa-solid fa-pencil"></i></a></td>
-                        </tr><tr>
+                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
+                        </tr>
+                        <tr>
                             <td>1</td>
                             <td>java</td>
                             <td>1258se69</td>
                             <td>14/04/2023</td>
                             <td>ZPRN001</td>
                             <td>test staff</td>
-                            <td><a  href="#"><i class="fa-solid fa-eye"></i></a> <a  href="#"><i class="fa-solid fa-pencil"></i></a></td>
+                            <td><a href="#"><i class="fa-solid fa-eye"></i></a> <a href="#"><i class="fa-solid fa-pencil"></i></a></td>
                         </tr>
                     </tbody>
                 </table>

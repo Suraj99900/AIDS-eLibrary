@@ -52,6 +52,7 @@ function handleSearchSuccess(data) {
             sTemplate += "<p class='card-text' ><small class='text-muted'> <b>ISBN/RELEATED : </b> " + book['isbn'] + "</small></p>";
             sTemplate += "<p class='card-text' ><small class='text-muted'> <b>Semester : </b> " + book['sem'] + "</small></p>";
             sTemplate += "<p class='card-text' ><small class='text-muted'> <b>Type : </b> " + sType + "</small></p>";
+            sTemplate +=  book['submission_date'] ? "<p class='card-text' ><small class='text-muted'> <b>Submission Date : </b> " + (book['submission_date'] ? book['submission_date'] :'') + "</small></p>" : "";
             sTemplate += "<p class='card-text'><small class='text-muted'> <b>Desciption : </b> " + book['description'] + "</small></p>";
             sTemplate += "<p class='card-text'><small class='text-muted'> <b>Added On : </b> " + book['added_on'] + "</small></p>";
             sTemplate += "</div>";
@@ -162,7 +163,7 @@ function downloadFile(url, index) {
 
 // Initial search when the document is ready
 $(document).ready(() => {
-
+    $('.d-none-custom').css('display', 'none');
     // Attach the click event handler to the search button
     $("#idSearch").click(searchBooks);
 
@@ -197,6 +198,19 @@ $(document).ready(() => {
         error: function (xhr, status, error) {
             // Handle errors here
             console.error(xhr.responseText);
+        }
+    });
+
+
+
+    // change evenet handel for Assignment
+    $('#typeId').change(function() {
+        var iTypeId =  $('#typeId').val();
+
+        if(iTypeId == 3){
+            $('.d-none-custom').css('display', 'block');
+        }else{
+            $('.d-none-custom').css('display', 'none');
         }
     });
 

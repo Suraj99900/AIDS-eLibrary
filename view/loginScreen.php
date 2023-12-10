@@ -11,9 +11,15 @@ include_once "./leftBar.php";
 
 
 
-
     <!-- home section start -->
     <section class="upload section " id="upload">
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-4">
+                <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Staff Login</li>
+            </ol>
+        </nav>
         <div class="container">
 
             <!-- upload Section form  start-->
@@ -93,3 +99,6 @@ include_once "./leftBar.php";
 include_once "./CDN_Footer.php";
 ?>
 <script src="../controller/LoginController.js"></script>
+<script>
+    setInterval(typeing, 150);
+</script>

@@ -38,7 +38,7 @@ function addBook() {
 
 
     $.ajax({
-        url: API_URL+"/books",
+        url: API_URL + "/books",
         method: "POST",
         data: { "bookData": bookData },
         success: function (data) {
@@ -61,25 +61,28 @@ function addBook() {
 function fetchBooks(page = 1) {
     var sSearch = $('#searchBookByNameISBNId').val();
     $.ajax({
-        url: API_URL + "/books?page=" + page + '&search=' + sSearch,
+        url: API_URL + "/fetch/book?page=" + page + '&search=' + sSearch,
         type: 'GET',
         success: function (response) {
-            const books = response.books.data;
+            const books = response.body.data;
             const bookTable = $('#manageBookById');
             bookTable.empty();
-
+            var i = 1;
             books.forEach((book, index) => {
-                bookTable.append(`<tr>
-                    <td>${index + 1}</td>
-                    <td>${book.book_name}</td>
-                    <td>${book.isbn_no}</td>
+                if (book.file_type == 1) {
+                    bookTable.append(`<tr>
+                    <td>${i}</td>
+                    <td>${book.name}</td>
+                    <td>${book.isbn}</td>
                     <td>${book.added_on}</td>
                     <td>${book.user_name}</td>
                     <td>
-                        <a href="#" onclick="viewBook(${book.id})"data-bs-toggle="modal" data-bs-target="#updatedBookModalId"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="#" class='download' data-url="${book.file_name}" data-index="${index}"><i class="fa-solid fa-file-arrow-down"></i></a>
                         <a href="#" onclick="deleteBook(${book.id})"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>`);
+                i++;
+                }
             });
             paginationData = response.books;
             // Handle pagination
@@ -123,61 +126,89 @@ function fetchBooks(page = 1) {
 }
 
 
+// Event delegation to handle download button clicks
+$(document).on('click', '.download', function () {
+    const url = $(this).data('url');
+    const index = $(this).data('index');
+    downloadFile(url, index);
+});
+
 
 // Function to view book details by ID
-function viewBook(bookId) {
+function downloadFile(url,index) {
+    console.log(url)
     $.ajax({
-        url: `${API_URL+"/books"}/${bookId}`,
-        type: 'GET',
-        success: function (data) {
-            // Handle the retrieved book data for viewing
-            if (data.status_code == 200) {
-                $('#updateNameId').val('');
-                $('#updateISBNId').val('');
-                $('#bookId').val('');
-                const book = data.books;
-                $('#updateNameId').val(book.book_name);
-                $('#updateISBNId').val(book.isbn_no);
-                $('#bookId').val(book.id);
+        url: `${API_URL}/download`,
+        method: 'POST',
+        data: { url: url },
+        xhrFields: {
+            responseType: 'blob' // Set the response type to 'blob' to handle binary data
+        },
+        success: function (data, status, xhr) {
+            if (data) {
+                const contentDisposition = xhr.getResponseHeader('Content-Disposition');
+                const fileName = contentDisposition.match(/filename="(.+)"/)[1];
+
+                // Create a Blob object from the downloaded data
+                const blob = new Blob([data], { type: 'application/octet-stream' });
+
+                // Create a URL for the Blob object
+                const url = window.URL.createObjectURL(blob);
+
+                // Create an anchor element to trigger the download
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+
+                a.click();
+
+                // Clean up
+                window.URL.revokeObjectURL(url);
+                document.body.removeChild(a);
+
+                alert('File downloaded successfully for ' + fileName);
             } else {
-                alert("Error");
+                alert('No data received for download.');
             }
         },
         error: function (xhr, status, error) {
-            console.error('Ajax Error:', xhr.responseText);
-            alert('An error occurred');
+            console.log('Download Error:', error);
+            const errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : 'An error occurred during download';
+            alert(errorMessage);
         }
     });
 }
 
 // Function to update book details by ID
-function updateBook(bookId, updatedData) {
-    $.ajax({
-        url: `${API_URL+"/books"}/${bookId}`,
-        method: "PUT",
-        data: updatedData,
-        success: function (data) {
-            if (data.status_code === 200) {
-                alert(data.message);
+// function updateBook(bookId, updatedData) {
+//     $.ajax({
+//         url: `${API_URL+"/books"}/${bookId}`,
+//         method: "PUT",
+//         data: updatedData,
+//         success: function (data) {
+//             if (data.status_code === 200) {
+//                 alert(data.message);
 
-                // Hide the modal
-                $('#updatedBookModalId').modal('hide');
+//                 // Hide the modal
+//                 $('#updatedBookModalId').modal('hide');
 
-                // You can optionally refresh the book list here
-                fetchBooks();
-            }
-        },
-        error: function (xhr, status, error) {
-            console.error('Ajax Error:', xhr.responseText);
-            alert('An error occurred');
-        }
-    });
-}
+//                 // You can optionally refresh the book list here
+//                 fetchBooks();
+//             }
+//         },
+//         error: function (xhr, status, error) {
+//             console.error('Ajax Error:', xhr.responseText);
+//             alert('An error occurred');
+//         }
+//     });
+// }
 
 // function for delete the recored by id
 function deleteBook(bookId) {
     $.ajax({
-        url: `${API_URL+"/books"}/${bookId}`,
+        url: `${API_URL + "/fetch/book"}/${bookId}`,
         method: "DELETE",
         success: ((data) => {
             if (data.status_code === 200) {
@@ -196,66 +227,66 @@ function deleteBook(bookId) {
 
 // Add Dynamic Filed in Add book
 
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", function () {
 
 
-    // Add event listener to the "Add" button
-    document.getElementById("addBookField").addEventListener("click", function (e) {
-        e.preventDefault();
+//     // Add event listener to the "Add" button
+//     document.getElementById("addBookField").addEventListener("click", function (e) {
+//         e.preventDefault();
 
-        // Create a new div to hold the dynamic fields
-        const dynamicFieldDiv = document.createElement("div");
-        dynamicFieldDiv.className = "row align-items-center p-3";
+//         // Create a new div to hold the dynamic fields
+//         const dynamicFieldDiv = document.createElement("div");
+//         dynamicFieldDiv.className = "row align-items-center p-3";
 
-        const dynamicBookname = document.createElement("div");
-        dynamicBookname.className = "col-sm-12 col-md-6 col-lg-6";
+//         const dynamicBookname = document.createElement("div");
+//         dynamicBookname.className = "col-sm-12 col-md-6 col-lg-6";
 
-        // Create a new input for the book name
-        const BookNameLabel = document.createElement("label");
-        BookNameLabel.for = "bookUserName";
-        BookNameLabel.className = "form-label";
-        BookNameLabel.innerHTML = "<i class='fa-solid fa-user'></i> Book Name";
+//         // Create a new input for the book name
+//         const BookNameLabel = document.createElement("label");
+//         BookNameLabel.for = "bookUserName";
+//         BookNameLabel.className = "form-label";
+//         BookNameLabel.innerHTML = "<i class='fa-solid fa-user'></i> Book Name";
 
-        // Create a new input for the book name
-        const bookNameInput = document.createElement("input");
-        bookNameInput.type = "text";
-        bookNameInput.className = "form-control custom-control";
-        bookNameInput.name = "bookname[]";
-        bookNameInput.placeholder = "Enter book name";
+//         // Create a new input for the book name
+//         const bookNameInput = document.createElement("input");
+//         bookNameInput.type = "text";
+//         bookNameInput.className = "form-control custom-control";
+//         bookNameInput.name = "bookname[]";
+//         bookNameInput.placeholder = "Enter book name";
 
-        dynamicBookname.appendChild(BookNameLabel);
-        dynamicBookname.appendChild(bookNameInput);
+//         dynamicBookname.appendChild(BookNameLabel);
+//         dynamicBookname.appendChild(bookNameInput);
 
 
-        const dynamicBookISBN = document.createElement("div");
-        dynamicBookISBN.className = "col-sm-12 col-md-6 col-lg-6";
+//         const dynamicBookISBN = document.createElement("div");
+//         dynamicBookISBN.className = "col-sm-12 col-md-6 col-lg-6";
 
-        const BookISBNILabel = document.createElement("label");
-        BookISBNILabel.for = "bookUserName";
-        BookISBNILabel.className = "form-label";
-        BookISBNILabel.innerHTML = "<i class='fa-solid fa-hashtag'></i> ISBN";
+//         const BookISBNILabel = document.createElement("label");
+//         BookISBNILabel.for = "bookUserName";
+//         BookISBNILabel.className = "form-label";
+//         BookISBNILabel.innerHTML = "<i class='fa-solid fa-hashtag'></i> ISBN";
 
-        // Create a new input for the ISBN
-        const bookISBNInput = document.createElement("input");
-        bookISBNInput.type = "text";
-        bookISBNInput.className = "form-control custom-control";
-        bookISBNInput.name = "bookisbn[]";
-        bookISBNInput.placeholder = "Enter Book ISBN Number";
+//         // Create a new input for the ISBN
+//         const bookISBNInput = document.createElement("input");
+//         bookISBNInput.type = "text";
+//         bookISBNInput.className = "form-control custom-control";
+//         bookISBNInput.name = "bookisbn[]";
+//         bookISBNInput.placeholder = "Enter Book ISBN Number";
 
-        dynamicBookISBN.appendChild(BookISBNILabel);
-        dynamicBookISBN.appendChild(bookISBNInput);
+//         dynamicBookISBN.appendChild(BookISBNILabel);
+//         dynamicBookISBN.appendChild(bookISBNInput);
 
-        // Append the new inputs to the dynamic field div
-        dynamicFieldDiv.appendChild(dynamicBookname);
-        dynamicFieldDiv.appendChild(dynamicBookISBN);
+//         // Append the new inputs to the dynamic field div
+//         dynamicFieldDiv.appendChild(dynamicBookname);
+//         dynamicFieldDiv.appendChild(dynamicBookISBN);
 
-        // Append the dynamic field div to the container
-        document.getElementById("dynamicBookFields").appendChild(dynamicFieldDiv);
+//         // Append the dynamic field div to the container
+//         document.getElementById("dynamicBookFields").appendChild(dynamicFieldDiv);
 
-        // Increment the field counter
-        fieldCounter++;
-    });
-});
+//         // Increment the field counter
+//         fieldCounter++;
+//     });
+// });
 
 
 $(document).ready(function () {

@@ -52,7 +52,7 @@ function handleAddError(xhr, status, error) {
 // Function to fetch book issues and populate the table
 function fetchBookIssues(page = 1) {
 
-    var sSearch = $('#searchById').val();
+    var sSearch = $('#searchById').val() ? $('#searchById').val() : '';
 
     // Make the Ajax request
     $.ajax({
@@ -70,8 +70,8 @@ function fetchBookIssues(page = 1) {
                         <td>${index + 1}</td>
                         <td>${item.student_info.name}</td>
                         <td>${item.student_info.zprn}</td>
-                        <td>${item.book_manage.book_name}</td>
-                        <td>${item.book_manage.isbn_no}</td>
+                        <td>${item.book_manage.name}</td>
+                        <td>${item.book_manage.isbn}</td>
                         <td>${item.issue_date}</td>
                         <td>${item.user_name}</td>
                         <td class="${item.is_return ? 'text-success-emphasis">Returned' : 'text-danger">Pending'}</td>
@@ -175,8 +175,8 @@ function fetchPenddingToReturn(page = 1, iShow = 0) {
                         <td>${index + 1}</td>
                         <td>${item.student_info.name}</td>
                         <td>${item.student_info.zprn}</td>
-                        <td>${item.book_manage.book_name}</td>
-                        <td>${item.book_manage.isbn_no}</td>
+                        <td>${item.book_manage.name}</td>
+                        <td>${item.book_manage.isbn}</td>
                         <td>${item.issue_date}</td>
                         <td class="${statusClass}">${item.is_return ? 'Returned' : 'Pending'}</td>
                         <td>${actionButton}</td>
@@ -293,7 +293,7 @@ $(document).ready(function () {
         dropdownParent: $('#AddBookIssuesModalId'),
         placeholder: 'Select a book',
         ajax: {
-            url: API_URL + '/books', // Replace with your API endpoint for fetching students
+            url: API_URL + '/fetch/book', // Replace with your API endpoint for fetching students
             dataType: 'json',
             data: function (params) {
                 var query = {
@@ -306,10 +306,10 @@ $(document).ready(function () {
             },
             processResults: function (data) {
                 return {
-                    results: $.map(data.books.data, function (item) {
+                    results: $.map(data.body.data, function (item) {
                         return {
                             id: item.id,
-                            text: item.book_name + "(" + item.isbn_no + ")"
+                            text: item.name + "(" + item.isbn + ")"
                         };
                     })
                 };
