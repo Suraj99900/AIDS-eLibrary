@@ -41,6 +41,13 @@ if (!$bIsLogin) {
             <div class="upload-btn-section shadow p-3 mb-5 bg-body rounded flex">
                 <div class="row p-2">
                     <div class="card m-2" style="width: 18rem;">
+                        <img src="../res/img/notes.png" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-5">Class Room Notes</h5>
+                            <a href="./uploadClassRoom.php?iActive=2&staffAccess=1" class="btn btn-primary">Upload</a>
+                        </div>
+                    </div>
+                    <div class="card m-2" style="width: 18rem;">
                         <img src="../res/img/upload2.svg" class="card-img-top" alt="...">
                         <div class="card-body text-center">
                             <h5 class="card-title mb-5">Upload Books</h5>
@@ -73,10 +80,6 @@ if (!$bIsLogin) {
 </div>
 
 <!-- main Content end-->
-
-</div>
-
-<!-- main container end  -->
 
 <!-- style switcher start -->
 <div class="style-switcher">
