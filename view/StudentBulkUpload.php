@@ -2,6 +2,11 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+if (!$bIsLogin) {
+    header("Location: loginScreen.php?staffAccess=1", true, 301);
+    exit;
+}
 ?>
 
 <!-- main Content start -->
@@ -9,42 +14,41 @@ include_once "./leftBar.php";
 
     <!-- home section start -->
     <section class="Student-Info section " id="studentInfoId">
-
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb pt-4">
                 <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Manage Student Info</li>
+                <li class="breadcrumb-item"><a href="studentInfo.php?iActive=4&staffAccess=1">Manage Student Info</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Student Bulk Upload</li>
             </ol>
         </nav>
-
         <div class="container">
 
             <!-- upload Section form  start-->
             <div class="row">
                 <div class="section-title padd-15">
-                    <h2>Manage Student Info</h2>
+                    <h2> Student Bulk Upload</h2>
                 </div>
             </div>
+            <div class="upload-btn-section shadow-lg p-lg-5 p-sm-5 p-md-5 mb-5 bg-body rounded flex" style="position: relative;">
+                <form>
+                    <div class="row align-items-center p-3">
+                        
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <label for="selectBook" class="form-label"><i class="fa-solid fa-file-arrow-up"></i> Upload Excel File </label>
+                            <input type="file" class="form-control custom-control btn btn-primary" id="studentUploadId" name="StudentUpload">
+                        </div>
 
-            <div class="right-flex">
-                <a href="addStudentInfo.php?iActive=4&staffAccess=1" class="btn mb-5 m-2">Add Student Info</a>
-                <a href="StudentBulkUpload.php?iActive=4&staffAccess=1" class="btn mb-5">Bulk Upload</a>
+                        <div class="col-sm-12 col-md-6 col-lg-6 right-flex">
+                            <a class="btn mt-5 btn-info" id="BulkUploadStudentId">Download Refrence File</a>
+                        </div>
+                    </div>
+
+                    <div class="flex search-btn mt-5">
+                        <a id="idUploadSubmit" class="btn search  mb-4">Submit</a>
+                    </div>
+                </form>
             </div>
 
-            <div class="student-info-table">
-                <table id="studentTableId" class="display">
-                    <thead>
-                        <tr>
-                            <th>Sr no</th>
-                            <th>Name</th>
-                            <th>ZPRN</th>
-                            <th>action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
 
         </div>
     </section>
@@ -93,4 +97,4 @@ include_once "./leftBar.php";
 <?php
 include_once "./CDN_Footer.php";
 ?>
-<script src="../controller/studentInfoController.js"></script>
+<script src="../controller/StudentBulkUploadController.js"></script>

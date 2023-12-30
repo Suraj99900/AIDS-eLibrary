@@ -63,7 +63,7 @@ function getStudents() {
                     student.name, // Name
                     student.zprn, // Name
                     // Action column with links
-                    `<a href="viewStudentInfo.php?ZPRN=`+ student.zprn +`"><i class="fa-solid fa-eye"></i></a> <a href="updateStudentInfo.php?ZPRN=` + student.zprn + `"><i class="fa-solid fa-pencil"></i></a>`
+                    `<a href="viewStudentInfo.php?ZPRN=`+ student.zprn +`&iActive=4&staffAccess=1"><i class="fa-solid fa-eye"></i></a> <a href="updateStudentInfo.php?ZPRN=` + student.zprn + `&iActive=4&staffAccess=1"><i class="fa-solid fa-pencil"></i></a>`
                 ]);
             });
 

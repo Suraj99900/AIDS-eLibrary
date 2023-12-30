@@ -307,10 +307,12 @@ $(document).ready(function () {
             processResults: function (data) {
                 return {
                     results: $.map(data.body.data, function (item) {
-                        return {
-                            id: item.id,
-                            text: item.name + "(" + item.isbn + ")"
-                        };
+                        if (item.file_type == 1) {
+                            return {
+                                id: item.id,
+                                text: item.name + "(" + item.isbn + ")"
+                            };
+                        }
                     })
                 };
             }

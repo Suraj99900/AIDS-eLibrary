@@ -2,6 +2,11 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+if (!$bIsLogin) {
+    header("Location: loginScreen.php?staffAccess=1", true, 301);
+    exit;
+}
 ?>
 
 <!-- main Content start -->
@@ -9,6 +14,13 @@ include_once "./leftBar.php";
 
     <!-- home section start -->
     <section class="Student-Info section " id="studentInfoId">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-4">
+                <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="studentInfo.php?iActive=4&staffAccess=1">Manage Student Info</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add Student Info</li>
+            </ol>
+        </nav>
         <div class="container">
 
             <!-- upload Section form  start-->

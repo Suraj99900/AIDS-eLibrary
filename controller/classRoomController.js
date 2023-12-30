@@ -33,24 +33,26 @@ function fetchFolder(search = '') {
             if (aData.length > 0) {
                 $.each(aData, function (index, folder) {
                     // Assuming folderName is a property of each folder
-                    var folderName = folder.folder_name;
+                    if (folder.status == 1) {
+                        var folderName = folder.folder_name;
 
-                    // Generate a unique id for each folder
-                    var folderId = 'folder_' + index;
+                        // Generate a unique id for each folder
+                        var folderId = 'folder_' + index;
 
-                    // Append a folder icon with improved style, id, and a link to idMasterFolder div for each folder
-                    $('#idMasterFolder').append(
-                        '<div class="col-lg-3 col-md-4 col-sm-12 folder">' +
-                        '<div class="folder-card" id="' + folderId + '">' +
-                        '<a href="subFolder.php?masterFolderId=' + folder.id + '&masterFolderName=' + folderName + '&iActive=6" class="folder-link">' +
-                        '<div class="folder-icon">' +
-                        '<i class="fa-solid fa-folder-open"></i>' + // You can use an appropriate icon class
-                        '</div>' +
-                        '<p class="folder-name">' + folderName + '</p>' +
-                        '</a>' +
-                        '</div>' +
-                        '</div>'
-                    );
+                        // Append a folder icon with improved style, id, and a link to idMasterFolder div for each folder
+                        $('#idMasterFolder').append(
+                            '<div class="col-lg-3 col-md-4 col-sm-12 folder">' +
+                            '<div class="folder-card" id="' + folderId + '">' +
+                            '<a href="subFolder.php?masterFolderId=' + folder.id + '&masterFolderName=' + folderName + '&iActive=6" class="folder-link">' +
+                            '<div class="folder-icon">' +
+                            '<i class="fa-solid fa-folder-open"></i>' + // You can use an appropriate icon class
+                            '</div>' +
+                            '<p class="folder-name">' + folderName + '</p>' +
+                            '</a>' +
+                            '</div>' +
+                            '</div>'
+                        );
+                    }
                 });
             } else {
                 $('#idMasterFolder').append(

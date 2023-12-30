@@ -23,7 +23,7 @@ $iStaffAccess = $_GET['staffAccess'] ? $_GET['staffAccess'] : '';
             <?php if ($iStaffAccess != 1) { ?>
                 <li><a href="home.php?iActive=1" class="<?php echo ($iActive == 1 ? "active" : "") ?>"><i class="fa fa-home"></i>Home</a></li>
                 <li><a href="classRoom.php?iActive=6" class="<?php echo ($iActive == 6 ? "active" : "") ?>"><i class="fa-solid fa-school"></i> Class Room</a></li>
-                <li><a href="studentInfo.php?iActive=4" class="<?php echo ($iActive == 4 ? "active" : "") ?>"><i class="fa-solid fa-circle-info"></i> Student Info</a></li>
+                
                 <li><a href="home.php#contact" class="<?php echo ($iActive == 5 ? "active" : "") ?>"><i class="fa fa-comments"></i> Contact</a></li>
 
             <?php } else { ?>
@@ -33,6 +33,7 @@ $iStaffAccess = $_GET['staffAccess'] ? $_GET['staffAccess'] : '';
                     <li><a href="uploadScreen.php?iActive=2&staffAccess=1" class="<?php echo ($iActive == 2 ? "active" : "") ?>"><i class="fa-solid fa-upload"></i>Upload</a></li>
                     <li><a href="manageIssueBook.php?iActive=3&staffAccess=1" class="<?php echo ($iActive == 3 ? "active" : "") ?>"><i class="fa-solid fa-grip-vertical"></i>Dashboard</a></li>
                     <li><a href="folderManagement.php?iActive=5&staffAccess=1" class="<?php echo ($iActive == 5 ? "active" : "") ?>"><i class="fa-solid fa-folder-open"></i>Folder Management</a></li>
+                    <li><a href="studentInfo.php?iActive=4&staffAccess=1" class="<?php echo ($iActive == 4 ? "active" : "") ?>"><i class="fa-solid fa-circle-info"></i> Student Info</a></li>
                 <?php } ?>
                 <div class="container px-4">
                     <div class="row gx-2">
