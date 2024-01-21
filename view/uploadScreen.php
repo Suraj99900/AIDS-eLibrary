@@ -4,7 +4,7 @@ include_once "./CDN_Header.php";
 include_once "./leftBar.php";
 include_once "../session.php";
 
-$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+$bIsLogin = isset($_SESSION['is_login']) ? $_SESSION['is_login'] : false;
 if (!$bIsLogin) {
     header("Location: loginScreen.php?staffAccess=1", true, 301);
     exit;
@@ -38,33 +38,33 @@ if (!$bIsLogin) {
             </div>
 
             <h3 class="contact-title padd-15">AI&DS STAFF UPLOAD SECTION</h3>
-            <div class="upload-btn-section shadow p-3 mb-5 bg-body rounded flex">
+            <div class="upload-btn-section shadow p-3 mb-5  rounded flex">
                 <div class="row p-2">
-                    <div class="card m-2" style="width: 18rem;">
+                    <div class="card m-2 bg-card-vl" style="width: 18rem;">
                         <img src="../res/img/notes.png" class="card-img-top" alt="...">
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-5">Class Room Notes</h5>
+                            <h5 class="card-title mb-5 c-text">Class Room Notes</h5>
                             <a href="./uploadClassRoom.php?iActive=2&staffAccess=1" class="btn btn-primary">Upload</a>
                         </div>
                     </div>
-                    <div class="card m-2" style="width: 18rem;">
+                    <div class="card m-2 bg-card-vl" style="width: 18rem;">
                         <img src="../res/img/upload2.svg" class="card-img-top" alt="...">
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-5">Upload Books</h5>
+                            <h5 class="card-title mb-5 c-text">Upload Books</h5>
                             <a href="uploadBook.php?iActive=2&staffAccess=1" class="btn btn-primary">Upload</a>
                         </div>
                     </div>
-                    <div class="card m-2" style="width: 18rem;">
+                    <div class="card m-2 bg-card-vl" style="width: 18rem;">
                         <img src="../res/img/upload1.png" class="card-img-top mt-5" alt="...">
                         <div class="card-body flot-bottom text-center">
-                            <h5 class="card-title mb-5">Upload Notes</h5>
+                            <h5 class="card-title mb-5 c-text">Upload Notes</h5>
                             <a href="./uploadNotes.php?iActive=2&staffAccess=1" class="btn btn-primary">Upload</a>
                         </div>
                     </div>
-                    <div class="card m-2" style="width: 18rem;">
+                    <div class="card m-2 bg-card-vl" style="width: 18rem;">
                         <img src="../res/img/upload3.svg" class="card-img-top" alt="...">
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-5">Upload Assignment</h5>
+                            <h5 class="card-title mb-5 c-text">Upload Assignment</h5>
                             <a href="./uploadAssignment.php?iActive=2&staffAccess=1" class="btn btn-primary">Upload</a>
                         </div>
                     </div>

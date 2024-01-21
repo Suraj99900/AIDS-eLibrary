@@ -9,5 +9,5 @@ define('DB_PASSWORD', 'plus91');
 define('API_KEY', 'your-api-key-here');
 define('DEBUG_MODE', true);
 define('API_URL','http://localhost:8000/api');
-
-define('INDEX_LOCATION','http://localhost/AIDS-eLibrary/view/LMS-Dashboard.php');
+define('ABS_URL','http://localhost/project/AIDS-eLibrary/');
+define('INDEX_LOCATION','http://localhost/project/AIDS-eLibrary/view/LMS-Dashboard.php');

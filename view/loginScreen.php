@@ -1,7 +1,9 @@
 <?php
 // include header section of template
+include_once "../config.php";
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+$ABS_URL = ABS_URL;
 ?>
 
 
@@ -29,17 +31,17 @@ include_once "./leftBar.php";
                 </div>
             </div>
             <h3 class="contact-title padd-15 typing">Welcome to AI&DS E-Library </h3>
-            <div class="upload-btn-section shadow-lg p-lg-5 p-sm-5 p-md-5 mb-5 bg-body rounded flex" style="position: relative;">
+            <div class="upload-btn-section shadow-lg p-lg-5 p-sm-5 p-md-5 mb-5  rounded flex" style="position: relative;">
                 <form>
                     <div class="row align-items-center p-3">
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <label for="StaffUserName" class="form-label"><i class="fa-solid fa-user fa-i"></i> UserName</label>
+                            <label for="StaffUserName" class="form-label c-text"><i class="fa-solid fa-user fa-i"></i> UserName</label>
                             <input type="text" class="form-control custom-control " id="staffuserNameId" name="staffname" placeholder="Enter UserName">
                         </div>
                     </div>
                     <div class="row align-items-center p-3">
                         <div class="col-sm-12 col-md-12 col-lg-12">
-                            <label for="StaffUserPassword" class="form-label"><i class="fa-solid fa-lock fa-i"></i> Password</label>
+                            <label for="StaffUserPassword" class="form-label c-text"><i class="fa-solid fa-lock fa-i"></i> Password</label>
                             <input type="password" class="form-control custom-control" id="staffuserPasswordId" name="staffPassword" placeholder="Enter Password">
                         </div>
                     </div>
@@ -93,6 +95,9 @@ include_once "./leftBar.php";
 </div>
 
 <!-- manu toggler end -->
+<script>
+    const ABS_URL = "<?php echo ABS_URL?>";
+</script>
 
 <!-- include footer section -->
 <?php

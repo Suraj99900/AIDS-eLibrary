@@ -2,7 +2,7 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "../session.php";
-$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+$bIsLogin = isset($_SESSION['is_login']) ? $_SESSION['is_login'] : false;
 ?>
 
 <body>
@@ -41,9 +41,9 @@ $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
                     </div>
 
                     <h3 class="contact-title padd-15">AI&DS LMS Dashoboard</h3>
-                    <div class="upload-btn-section shadow p-3 bg-body rounded flex">
+                    <div class="upload-btn-section bg-card-low shadow p-3 rounded flex">
                         <div class="row p-2">
-                            <div class="card m-2 col-sm-12 col-md-6 col-lg-4" style="width: 20rem;">
+                            <div class="card m-2 col-sm-12 col-md-6 bg-card-vl col-lg-4" style="width: 20rem;">
                                 <a href="home.php?iActive=1">
                                     <img src="../res/img/study-literature.svg" class="card-img-top" alt="...">
                                     <div class="card-body text-center">
@@ -51,7 +51,7 @@ $bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
                                     </div>
                                 </a>
                             </div>
-                            <div class="card m-2 col-sm-12 col-md-6 col-lg-4" style="width: 20rem;">
+                            <div class="card m-2 col-sm-12 col-md-6 col-lg-4 bg-card-vl" style="width: 20rem;">
                                 <a href="./uploadScreen.php?staffAccess=1&iActive=2">
                                     <img src="../res/img/online-class.svg" class="card-img-top" alt="...">
                                     <div class="card-body text-center">

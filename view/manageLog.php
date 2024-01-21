@@ -12,7 +12,7 @@ if (!$bIsLogin) {
 
 <!-- main Content start -->
 <div class="main-content">
-    <section class="section ">
+    <section class="section overflow">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb pt-4">
                 <li class="breadcrumb-item"><a href="LMS-Dashboard.php">LMS Dashboard</a></li>

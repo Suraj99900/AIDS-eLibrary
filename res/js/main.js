@@ -255,3 +255,15 @@ const hideSidebar = () =>{
 }
 showSidebarBtn.addEventListener('click',showSidebar);
 hideSidebarBtn.addEventListener('click',hideSidebar);
+
+
+// alert response popbox
+
+function responsePop(title = '',message = '',icon = '',confirmButtonText = ''){
+    Swal.fire({
+        title: title,
+        text: message,
+        icon: icon,
+        confirmButtonText: confirmButtonText,
+    });
+}

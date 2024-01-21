@@ -12,7 +12,7 @@ $("#idLogin").click(function() {
         success: function(data) {
             if (data.status_code === 200) {
                 // Registration was successful
-                alert(data.message);
+                responsePop('Success',data.message,'success','ok');
                 
                 $.ajax({
                     url: "../session.php", // URL to your server-side script
@@ -26,12 +26,13 @@ $("#idLogin").click(function() {
                     success: function(data) {
                         console.log(data);
                         if(data == 1){
-                            window.location.href = "../view/uploadScreen.php?staffAccess=1";
+                            window.location.href = ABS_URL+"view/uploadScreen.php?staffAccess=1";
                         }
                     },
                     error: function(data) {
                         // Handle Ajax error
-                        alert('Error while genratng session.');
+                        responsePop('Error','Error while genratng session.','error','ok');
+
                     }
                 });
             }
@@ -39,7 +40,7 @@ $("#idLogin").click(function() {
         error: function(data) {
             // Handle Ajax error
             var $aData = data.responseJSON;
-            alert($aData.message);
+            responsePop('Error',data.message,'error','ok');
         }
     });
 });

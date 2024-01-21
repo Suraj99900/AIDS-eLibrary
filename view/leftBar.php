@@ -1,9 +1,9 @@
 <?php
 include_once "../session.php";
-$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
-$iActive = $_GET['iActive'] ? $_GET['iActive'] : '';
+$bIsLogin = isset($_SESSION['is_login']) ? $_SESSION['is_login'] : false;
+$iActive = isset($_GET['iActive']) ? $_GET['iActive'] : '';
 
-$iStaffAccess = $_GET['staffAccess'] ? $_GET['staffAccess'] : '';
+$iStaffAccess = isset($_GET['staffAccess']) ? $_GET['staffAccess'] : '';
 ?>
 
 <!-- main container start -->
