@@ -2,6 +2,11 @@
 // include header section of template
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
+$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+if (!$bIsLogin) {
+    header("Location: loginScreen.php?staffAccess=1", true, 301);
+    exit;
+}
 ?>
 
 

@@ -39,8 +39,8 @@ $("#idLogin").click(function() {
         },
         error: function(data) {
             // Handle Ajax error
-            var $aData = data.responseJSON;
-            responsePop('Error',data.message,'error','ok');
+            var aData = data.responseJSON;
+            responsePop('Error',aData.message,'error','ok');
         }
     });
 });

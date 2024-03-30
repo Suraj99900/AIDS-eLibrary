@@ -3,7 +3,7 @@
 include_once "./CDN_Header.php";
 include_once "./leftBar.php";
 include_once "../session.php";
-$bIsLogin = $_SESSION['is_login'] ? $_SESSION['is_login'] : false;
+$bIsLogin = isset($_SESSION['is_login']) ? $_SESSION['is_login'] : false;
 ?>
 
 <body>
